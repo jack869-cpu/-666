@@ -10,6 +10,8 @@
 /* ===== 全域設定 ===== */
 body{    
     position: relative;
+    min-height: 100vh;
+    background: linear-gradient(-30deg, rgb(131, 131, 230) 0%, rgb(33, 33, 204) 50%, black 50% , gray 100%);
     margin: 0;  /* 避免 body margin 影響 */
 }
 
@@ -34,6 +36,23 @@ a {
     position: sticky;   /* 固定在頂部 */
     top: 0;
     z-index: 1000;      /* 避免被其他元素覆蓋 */
+}
+.html123::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    width: 0;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0,0.7);
+    transition: width 0.3s ease;
+            
+
+}
+
+.html123:hover::after {
+     width: 10%;
 }
 
 /* ===== 導覽列與欄位 ===== */
@@ -207,13 +226,17 @@ input{
 .scroll-page {
     display: inline-block;
     vertical-align: top;
-    width: 100%;
-    min-height: 70%; 
-    background: gray;
+    width: 100%; 
+    height: 95%; 
+    background:rgb(133, 133, 133,0.5);
     border-radius: 8px;
     margin: 0 auto;
     padding: 20px;  
     scroll-snap-align: start;
+    min-height: 0;
+    flex: 1;
+    overflow-y: auto;
+    
 }
 
 /* ===== 每頁文字容器 ===== */
@@ -421,4 +444,5 @@ deleteAllBtn.addEventListener("click", function (e) {
 </script>
 </body>
 </html>
+
 
