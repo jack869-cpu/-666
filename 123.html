@@ -142,11 +142,13 @@ form.css.table{
 }
 
 .form{
-    width: 40%;
     height: 80%;
-    background-color: gray;
+    /* background-color: gray; */
     border-radius: 10px;
-    text-align: center;    
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 40rem;   
 }
 
 .square{
@@ -163,6 +165,51 @@ form label{
     margin: 0 auto;
     padding: 30px;
 }
+
+form {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.the_text {
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.8em;
+    background: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    outline: none;
+            
+}
+
+.the_text:hover {
+    border-color: blue;
+}
+
+.the_text:focus {
+    border-color: aqua;
+}
+
+.the_label {
+    position: absolute;
+    color: white;
+    top: 0.8em;
+    left: 1em;
+    cursor: text;
+    user-select: none;
+    transition: top 200ms ease-in, font-size 200ms ease-in;
+            
+}
+
+.the_text:focus ~ .the_label,
+.the_text:not(:placeholder-shown) ~ .the_label {
+    top: -1em;
+    font-size: 0.8em;
+}
+
 .sent{
     background-color: rgba(255, 255, 255, 0.2);           
 }
@@ -222,7 +269,7 @@ input{
     overflow-y: hidden; 
     white-space: nowrap; 
     padding: 20px 0;
-    background: rgb(133, 133, 133, 0.3);
+    background: rgb(133, 133, 133, 0.15);
     border-radius: 8px;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
@@ -300,8 +347,8 @@ head1{
 
     <div class="form">
         <form action="get">
-            <label for="name">輸入文字</label><br>
-            <input type="text" id="name" name="name" class="the_text">
+            <input type="text" id="name" name="name" class="the_text" placeholder="">
+            <label for="name">聊天室</label><br>
             <input type="submit" value="發送✈️" class="sent">
         </form>
     </div>   
@@ -455,6 +502,7 @@ deleteAllBtn.addEventListener("click", function (e) {
 </script>
 </body>
 </html>
+
 
 
 
