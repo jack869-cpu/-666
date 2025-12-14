@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
@@ -331,30 +332,62 @@ head1{
         <li ><a href="#" class="html4">內容</a></li>
         <li ><a href="#" class="html4">內容</a></li>  
     </div>                  
-</ul>    
+</ul>
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-database-compat.js"></script>
 
 <script>
+// Firebase 設定
+const firebaseConfig = {
+  apiKey: "AIzaSyDWsBH-ozVRjYP9YTASPpsV9AuggDfSbDQ",
+  authDomain: "html123-340be.firebaseapp.com",
+  databaseURL: "https://html123-340be-default-rtdb.firebaseio.com",
+  projectId: "html123-340be",
+  storageBucket: "html123-340be.firebasestorage.app",
+  messagingSenderId: "192470264730",
+  appId: "1:192470264730:web:99178a0f9125deb4b66823"
+};
+
+// 初始化 Firebase
+firebase.initializeApp(firebaseConfig);
+
+// 取得資料庫
+const db = firebase.database();
+
 const form = document.querySelector(".form form");
 const input = document.querySelector("#name");
 const firstPageContent = document.querySelector("#page-1 .page-content"); 
-
 form.addEventListener("submit", function(e){
     e.preventDefault(); 
+
     const text = input.value.trim();
     if(!text) return;
 
+    // ⭐ 只做一件事：存到 Firebase
+    db.ref("messages").push({
+        text: text,
+        time: Date.now()
+    });
+
+    input.value = "";
+});
+function addMessage(text){
     const p = document.createElement("p");
     p.textContent = text;
-    p.style.margin = "10px 0";      
-    p.style.fontSize = "40px";       
-    p.style.color = "#39FF14";       
-    p.style.fontWeight = "bold";     
-    p.style.textShadow = "0 0 5px #39FF14"; 
-
+    p.style.margin = "10px 0";
+    p.style.fontSize = "40px";
+    p.style.color = "#39FF14";
+    p.style.fontWeight = "bold";
+    p.style.textShadow = "0 0 5px #39FF14";
     firstPageContent.appendChild(p);
-
-    input.value = ""; 
+}
+db.ref("messages").on("child_added", snapshot => {
+    const data = snapshot.val();
+    addMessage(data.text);
 });
+
+
+
 
 const container = document.querySelector(".scroll-container");
 document.querySelectorAll(".table9 a").forEach(btn => {
