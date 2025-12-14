@@ -36,6 +36,7 @@ a {
     position: sticky;   /* 固定在頂部 */
     top: 0;
     z-index: 1000;      /* 避免被其他元素覆蓋 */
+    padding:10px;
 }
 .html123::after {
     content: '';
@@ -213,11 +214,12 @@ input{
     margin: 50px auto;
     text-align: center;
     width: 60%;
+    height:600px;
     overflow-x: auto; 
     overflow-y: hidden; 
     white-space: nowrap; 
     padding: 20px 0;
-    background: gray;
+    background: rgb(133, 133, 133, 0.3);
     border-radius: 8px;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
@@ -444,5 +446,6 @@ deleteAllBtn.addEventListener("click", function (e) {
 </script>
 </body>
 </html>
+
 
 
