@@ -255,7 +255,7 @@ head1{
 
 <ul class="html2">
     <div class="html3">            
-        <li ><a href="#" class="html4">內容</a></li>
+        <li><a href="#" class="html4" id="deleteAllBtn">刪除全部</a></li>
         <li ><a href="#" class="html4">內容</a></li>
         <li ><a href="#" class="html4">內容</a></li>   
     </div>     
@@ -402,6 +402,22 @@ document.querySelectorAll(".table9 a").forEach(btn => {
         });
     });
 });
+// ===== 刪除全部聊天功能 =====
+const deleteAllBtn = document.getElementById("deleteAllBtn");
+
+deleteAllBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const ok = confirm("確定要刪除【聊天大廳】所有訊息嗎？此動作無法復原！");
+    if (!ok) return;
+
+    // 1️⃣ 刪 Firebase 裡的資料
+    db.ref("messages").remove();
+
+    // 2️⃣ 清空畫面
+    firstPageContent.innerHTML = "";
+});
+
 </script>
 </body>
 </html>
