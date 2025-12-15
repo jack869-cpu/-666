@@ -237,16 +237,26 @@ input{
 }
 
 .table9 a{
-    width: 50%;              
-    justify-self: start;     
-    color:black;
+    width: 45%;
+    aspect-ratio: 1 / 2;
+    min-width: 0;
+    min-height: 0;
+    color: black;
     text-align: center;
     border: 3px solid black;
     border-radius: 10px;
     padding: 20% 20%;
-    font-size: 40px;
+    margin: 5%;
+    font-size: 2em;
     background-color: yellow;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+    white-space: normal;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
 }
 
 .table9 a:hover{
@@ -444,7 +454,7 @@ form.addEventListener("submit", function(e){
     const text = input.value.trim();
     if(!text) return;
 
-    // ⭐ 只做一件事：存到 Firebase
+    // 只做一件事：存到 Firebase
     db.ref("messages").push({
         text: text,
         time: Date.now()
@@ -492,16 +502,17 @@ deleteAllBtn.addEventListener("click", function (e) {
     const ok = confirm("確定要刪除【聊天大廳】所有訊息嗎？此動作無法復原！");
     if (!ok) return;
 
-    // 1️⃣ 刪 Firebase 裡的資料
+    // 刪 Firebase 裡的資料
     db.ref("messages").remove();
 
-    // 2️⃣ 清空畫面
+    // 清空畫面
     firstPageContent.innerHTML = "";
 });
 
 </script>
 </body>
 </html>
+
 
 
 
