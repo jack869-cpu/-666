@@ -602,7 +602,14 @@ form.addEventListener("submit", function(e){
 
     const username = localStorage.getItem("username");
     if(!username){
-        alert("請先設定帳號名稱才能發送訊息！");
+        // 提示用戶去個人資料頁面
+        alert("請先在個人資料頁面設定帳號名稱，才能發送訊息！");
+        
+        // 自動切換到「個人資料」頁面
+        const page = document.getElementById("page-2");
+        const left = page.offsetLeft;
+        container.scrollTo({ left: left, behavior: "smooth" });
+
         return;
     }
 
@@ -613,6 +620,7 @@ form.addEventListener("submit", function(e){
 
     input.value = "";
 });
+
 // ===== 監聽 Firebase 新訊息 =====
 db.ref("messages").on("child_added", snapshot => {
     const data = snapshot.val();
