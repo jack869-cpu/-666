@@ -463,9 +463,20 @@ input{
             <div id="scrollDownBtn">⬇</div>
         </div>
         <div class="scroll-page" id="page-2">
-            <h1>個人資料</h1>
-            <div class="page-content"></div>
+    <h1>個人資料</h1>
+    <div class="page-content">
+        <!-- 帳號名稱輸入區 -->
+        <div class="form" style="margin-top: 20px; max-width: 300px;">
+            <form id="usernameForm">
+                <input type="text" id="username" name="username" class="the_text" placeholder="" autocomplete="off">
+                <label for="username" class="the_label">帳號名稱</label><br>
+                <input type="submit" value="確認" class="sent">
+            </form>
+            <p id="displayUsername" style="color:white; margin-top:10px;">尚未設定帳號名稱</p>
         </div>
+    </div>
+</div>
+
         <div class="scroll-page" id="page-3">
             <h1>第三頁</h1>
             <div class="page-content"></div>
@@ -644,6 +655,38 @@ firstPageContent.addEventListener("scroll", () => {
         firstPageContent.clientHeight < 10;
 
     scrollDownBtn.style.display = isAtBottom ? "none" : "flex";
+});
+// 選取表單與元素
+const usernameForm = document.getElementById("usernameForm");
+const usernameInput = document.getElementById("username");
+const displayUsername = document.getElementById("displayUsername");
+
+// 當表單提交時
+usernameForm.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const username = usernameInput.value.trim();
+    if(!username) return alert("請輸入帳號名稱");
+
+    // 存到 Firebase (路徑: users/username)
+    db.ref("users/username").set({
+        name: username,
+        time: Date.now()
+    });
+
+    // 顯示在頁面上
+    displayUsername.textContent = "帳號名稱：" + username;
+
+    // 清空輸入框
+    usernameInput.value = "";
+});
+
+// 頁面載入時從 Firebase 讀取已存在帳號名稱
+db.ref("users/username").once("value").then(snapshot => {
+    const data = snapshot.val();
+    if(data && data.name){
+        displayUsername.textContent = "帳號名稱：" + data.name;
+    }
 });
 
 </script>
