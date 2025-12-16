@@ -518,13 +518,22 @@ form.addEventListener("submit", function(e){
 function addMessage(text){
     const p = document.createElement("p");
     p.textContent = text;
-    p.style.margin = "10px 0";
-    p.style.fontSize = "40px";
-    p.style.color = "#39FF14";
-    p.style.fontWeight = "bold";
-    p.style.textShadow = "0 0 5px #39FF14";
+
+    
+    p.style.margin = "6px 0";
+    p.style.fontSize = "18px";        // 字變小
+    p.style.color = "#ffffff";        // 白色
+    p.style.textAlign = "left";       // 靠左
+    p.style.fontWeight = "normal";
+    p.style.textShadow = "none";
+    p.style.wordBreak = "break-word";
+
     firstPageContent.appendChild(p);
+
+    
+    firstPageContent.scrollTop = firstPageContent.scrollHeight;
 }
+
 db.ref("messages").on("child_added", snapshot => {
     const data = snapshot.val();
     addMessage(data.text);
@@ -565,7 +574,6 @@ deleteAllBtn.addEventListener("click", function (e) {
 </script>
 </body>
 </html>
-
 
 
 
