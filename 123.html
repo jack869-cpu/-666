@@ -225,12 +225,17 @@ input{
 .all_table{
     display: flex;
     justify-content: space-around;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: nowrap; /* 避免換行 */
 }
 
+
 /* 九宮格按鈕 */
-.table9{
+.table9 {
     width: 30%;
-    margin: 50px auto;      
+    height: 100%; /* 與兄弟元素（scroll-container）齊高 */
+    margin: 0;
     background-color: gray;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -238,6 +243,9 @@ input{
     gap: 10px;  
     position: relative;
 }
+
+
+
 
 
 .table9::after,
