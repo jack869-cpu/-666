@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="style.css">
 <style>
 /*  全域設定  */
+
+* {
+    cursor: none;
+}
+    
 body{    
     position: relative;
     min-height: 100vh;
@@ -432,9 +437,37 @@ input{
     background: rgba(0,0,0,0.9);
 }
 
+.blurry-lines {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    /* 在背景之上 */
+    pointer-events: none;
+    /* 不擋滑鼠與點擊 */
+}
+
+/* .relative {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+} */
+
+  .blurry-lines {
+    width: 0%;
+    height: 0%;
+}
+
 </style>
 </head>
+
+    
 <body>
+
+
+<div class="relative min-h-screen">
+    <div class="blurry-lines"></div>
+</div>
+    
 <a href="#" class="html123">首頁</a>
 
 <ul class="html2">
@@ -860,6 +893,7 @@ new p5(sketch, document.querySelector(".blurry-lines"));
 
 </body>
 </html>
+
 
 
 
