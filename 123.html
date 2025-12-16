@@ -698,10 +698,169 @@ document.querySelectorAll(".table9 a").forEach(btn => {
         container.scrollTo({ left: left, behavior: "smooth" });
     });
 });
+
+
+
+
+// 滑鼠動畫的部分
+
+        import p5 from "https://cdn.skypack.dev/p5@1.4.0";
+        class PointLine {
+            constructor(s, p1, p2, thickness = 1) {
+                this.s = s;
+                this.p1 = p1;
+                this.p2 = p2;
+                this.thickness = thickness;
+                this.dotCount = s.ceil(p1.dist(p2));
+                this.modifyFunc = (x, y) => [x, y];
+            }
+
+            draw() {
+                for (let i = 0; i < this.dotCount; i++) {
+                    let x = this.s.map(i, 0, this.dotCount, this.p1.x, this.p2.x);
+                    let y = this.s.map(i, 0, this.dotCount, this.p1.y, this.p2.y);
+                    [x, y] = this.modifyFunc(x, y);
+                    this.s.circle(x, y, this.thickness);
+                }
+            }
+
+            blur(seed = 0, amount = 0) {
+                const blurPower = 1 + this.s.sq(amount);
+                this.dotCount *= blurPower;
+                this.thickness *= (1 - amount);
+
+                this.modifyFunc = (x, y) => {
+                    x += seed * amount * this.s.randomGaussian();
+                    y += seed * amount * this.s.randomGaussian();
+                    return [x, y];
+                };
+            }
+        }
+
+        class PointShape {
+            constructor(s, x, y, r, edgeCount, thickness = 1) {
+                this.lines = [];
+                for (let i = 0; i < edgeCount; i++) {
+                    const a1 = (s.TWO_PI * i) / edgeCount;
+                    const a2 = (s.TWO_PI * (i + 1)) / edgeCount;
+
+                    const p1 = s.createVector(
+                        x + r * s.cos(a1),
+                        y + r * s.sin(a1)
+                    );
+                    const p2 = s.createVector(
+                        x + r * s.cos(a2),
+                        y + r * s.sin(a2)
+                    );
+
+                    this.lines.push(new PointLine(s, p1, p2, thickness));
+                }
+            }
+
+            draw() {
+                this.lines.forEach(line => line.draw());
+            }
+
+            blur(seed, amount) {
+                this.lines.forEach(line => line.blur(seed, amount));
+            }
+        }
+
+        const sketch = (s) => {
+            let mousePositions = [];
+            const maxPos = 12;
+            let hueTime = 0;
+
+            let lastMoveTime = Date.now();
+            const idleLimit = 1000;
+
+            let visibility = 1;
+            let targetVisibility = 1;
+
+            let breatheTime = 0;
+            let lastMouse = null;
+
+            s.setup = () => {
+                s.createCanvas(s.windowWidth, s.windowHeight);
+                s.noStroke();
+                s.colorMode(s.HSB, 1);
+                window.addEventListener("mousemove", () => {
+                    lastMoveTime = Date.now();
+
+                });
+            };
+
+            s.draw = () => {
+                const now = Date.now();
+                const idleTime = now - lastMoveTime;
+
+                // ===== 判斷目標顯示狀態 =====
+                if (idleTime > idleLimit) {
+                    targetVisibility = 0.15; // 閒置 → 微弱呼吸光
+                } else {
+                    targetVisibility = 1;    // 活動中 → 全亮
+                }
+
+                // ===== 平滑淡入淡出 =====
+                visibility = s.lerp(visibility, targetVisibility, 0.05);
+
+                // ===== 清除畫面（透明）=====
+                s.clear();
+
+                // ===== 呼吸光（只在閒置時明顯）=====
+                breatheTime += 0.02;
+                const breathe =
+                    idleTime > idleLimit
+                        ? 0.5 + 0.5 * Math.sin(breatheTime)
+                        : 1;
+
+                // ===== 滑鼠速度計算 =====
+                let speed = 0;
+                if (lastMouse) {
+                    speed = s.dist(s.mouseX, s.mouseY, lastMouse.x, lastMouse.y);
+                }
+                lastMouse = { x: s.mouseX, y: s.mouseY };
+
+                // ===== 顏色流動速度受滑鼠影響 =====
+                hueTime += 0.002 + speed * 0.0005;
+
+                // ===== 記錄滑鼠軌跡 =====
+                const mousePos = s.createVector(s.mouseX, s.mouseY);
+                mousePositions.unshift(mousePos);
+                if (mousePositions.length > maxPos) mousePositions.pop();
+
+    // ===== 畫形狀 =====
+        mousePositions.forEach((pos, i) => {
+            s.blendMode(s.ADD);
+
+            const ratio = i / mousePositions.length;
+
+            const hue = (hueTime + ratio * 0.15) % 1;
+            const alpha = 0.3 * visibility * breathe;
+
+            s.fill(hue, 0.7, 0.9, alpha);
+
+            const shape = new PointShape(s, pos.x, pos.y, 20, 60, 6);
+            shape.blur(10, ratio);
+            shape.draw();
+
+            s.blendMode(s.BLEND);
+        });
+    };
+
+    s.windowResized = () => {
+        s.resizeCanvas(s.windowWidth, s.windowHeight);
+    };
+};
+
+new p5(sketch, document.querySelector(".blurry-lines"));
+
+    
 </script>
 
 </body>
 </html>
+
 
 
 
