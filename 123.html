@@ -558,14 +558,24 @@ form.addEventListener("submit", function(e){
     const text = input.value.trim();
     if(!text) return;
 
-    // 只做一件事：存到 Firebase
-    db.ref("messages").push({
-        text: text,
-        time: Date.now()
-    });
+    // 新增檢查帳號名稱是否已設定
+    db.ref("users/username").once("value").then(snapshot => {
+        const userData = snapshot.val();
+        if(!userData || !userData.name){
+            alert("請先設定帳號名稱才能發送訊息！");
+            return;
+        }
 
-    input.value = "";
+        // 送訊息到 Firebase
+        db.ref("messages").push({
+            text: userData.name + "： " + text,  // 訊息前加上帳號名稱
+            time: Date.now()
+        });
+
+        input.value = "";
+    });
 });
+
 function addMessage(text){
     const p = document.createElement("p");
     p.textContent = text;
