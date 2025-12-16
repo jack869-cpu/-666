@@ -339,6 +339,7 @@ input{
 }
 
 .scroll-page {
+    position: relative;
     display: inline-block;
     vertical-align: top;
     width: 90%; 
@@ -393,22 +394,23 @@ head1{
 }
 /* ===== 聊天室向下箭頭 ===== */
 #scrollDownBtn{
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-    width: 50px;
-    height: 50px;
+    position: absolute;     /* ← 改成 absolute */
+    right: 20px;
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: rgba(0,0,0,0.7);
     color: white;
-    font-size: 26px;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 2000;
-    display: none; /* 預設隱藏 */
+    z-index: 50;
+    display: none;
 }
+
 
 #scrollDownBtn:hover{
     background: rgba(0,0,0,0.9);
@@ -417,7 +419,6 @@ head1{
 </style>
 </head>
 <body>
-<div id="scrollDownBtn">⬇</div>
 <a href="#" class="html123">首頁</a>
 
 <ul class="html2">
@@ -445,6 +446,7 @@ head1{
         <div class="scroll-page" id="page-1">
             <h1>聊天大廳</h1>
             <div class="page-content"></div>
+            <div id="scrollDownBtn">⬇</div>
         </div>
         <div class="scroll-page" id="page-2">
             <h1>個人資料</h1>
