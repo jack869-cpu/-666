@@ -544,42 +544,88 @@ const firebaseConfig = {
 
 // 初始化 Firebase
 firebase.initializeApp(firebaseConfig);
-
-// 取得資料庫
 const db = firebase.database();
 
+// ===== 帳號名稱處理 =====
+const usernameForm = document.getElementById("usernameForm");
+const usernameInput = document.getElementById("username");
+const displayUsername = document.getElementById("displayUsername");
+
+// 頁面載入時，先從 localStorage 取得帳號名稱
+const savedUsername = localStorage.getItem("username");
+if(savedUsername){
+    displayUsername.textContent = "帳號名稱：" + savedUsername;
+} else {
+    // localStorage 沒有，再從 Firebase 讀取
+    db.ref("users/username").once("value").then(snapshot => {
+        const data = snapshot.val();
+        if(data && data.name){
+            displayUsername.textContent = "帳號名稱：" + data.name;
+            localStorage.setItem("username", data.name);
+        }
+    });
+}
+
+// 表單提交時
+usernameForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    const username = usernameInput.value.trim();
+    if(!username) return alert("請輸入帳號名稱");
+
+    // 存到 Firebase
+    db.ref("users/username").set({
+        name: username,
+        time: Date.now()
+    });
+
+    // 存到 localStorage
+    localStorage.setItem("username", username);
+
+    // 顯示在頁面上
+    displayUsername.textContent = "帳號名稱：" + username;
+
+    // 清空輸入框
+    usernameInput.value = "";
+});
+
+// ===== 聊天室功能 =====
 const form = document.querySelector(".form form");
 const input = document.querySelector("#name");
 const firstPageContent = document.querySelector("#page-1 .page-content");
 const scrollDownBtn = document.getElementById("scrollDownBtn"); 
+
+// 發送訊息
 form.addEventListener("submit", function(e){
     e.preventDefault(); 
-
     const text = input.value.trim();
     if(!text) return;
 
-    // 新增檢查帳號名稱是否已設定
-    db.ref("users/username").once("value").then(snapshot => {
-        const userData = snapshot.val();
-        if(!userData || !userData.name){
-            alert("請先設定帳號名稱才能發送訊息！");
-            return;
-        }
+    const username = localStorage.getItem("username");
+    if(!username){
+        alert("請先設定帳號名稱才能發送訊息！");
+        return;
+    }
 
-        // 送訊息到 Firebase
-        db.ref("messages").push({
-            text: userData.name + "： " + text,  // 訊息前加上帳號名稱
-            time: Date.now()
-        });
-
-        input.value = "";
+    db.ref("messages").push({
+        text: username + "： " + text,
+        time: Date.now()
     });
+
+    input.value = "";
+});
+// ===== 監聽 Firebase 新訊息 =====
+db.ref("messages").on("child_added", snapshot => {
+    const data = snapshot.val();
+    if(data && data.text){
+        addMessage(data.text);
+    }
 });
 
+
+// 新增訊息到畫面
 function addMessage(text){
     const p = document.createElement("p");
     p.textContent = text;
-
     p.style.margin = "6px 0";
     p.style.fontSize = "18px";
     p.style.color = "#ffffff";
@@ -594,24 +640,44 @@ function addMessage(text){
     firstPageContent.appendChild(p);
 
     if (isAtBottom) {
-        // 使用者在底部 → 自動捲
         firstPageContent.scrollTop = firstPageContent.scrollHeight;
         scrollDownBtn.style.display = "none";
     } else {
-        // 使用者在看舊訊息 → 顯示箭頭
         scrollDownBtn.style.display = "flex";
     }
 }
 
+// ===== 刪除全部聊天訊息 =====
+const deleteAllBtn = document.getElementById("deleteAllBtn");
+deleteAllBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    const password = prompt("請輸入密碼以刪除所有訊息：");
+    if(password !== "990323"){
+        alert("密碼錯誤，無法刪除訊息！");
+        return;
+    }
 
-db.ref("messages").on("child_added", snapshot => {
-    const data = snapshot.val();
-    addMessage(data.text);
+    if(!confirm("確定要刪除【聊天大廳】所有訊息嗎？此動作無法復原！")) return;
+
+    db.ref("messages").remove();
+    firstPageContent.innerHTML = "";
 });
 
+// ===== 向下箭頭功能 =====
+scrollDownBtn.addEventListener("click", () => {
+    firstPageContent.scrollTop = firstPageContent.scrollHeight;
+    scrollDownBtn.style.display = "none";
+});
 
+firstPageContent.addEventListener("scroll", () => {
+    const isAtBottom =
+        firstPageContent.scrollHeight -
+        firstPageContent.scrollTop -
+        firstPageContent.clientHeight < 10;
+    scrollDownBtn.style.display = isAtBottom ? "none" : "flex";
+});
 
-
+// ===== 九宮格切換頁面 =====
 const container = document.querySelector(".scroll-container");
 document.querySelectorAll(".table9 a").forEach(btn => {
     btn.addEventListener("click", e => {
@@ -619,87 +685,11 @@ document.querySelectorAll(".table9 a").forEach(btn => {
         const id = btn.dataset.target;
         const page = document.getElementById(id);
         const left = page.offsetLeft;
-        container.scrollTo({
-            left: left,
-            behavior: "smooth"
-        });
+        container.scrollTo({ left: left, behavior: "smooth" });
     });
 });
-// ===== 刪除全部聊天功能 =====
-const deleteAllBtn = document.getElementById("deleteAllBtn");
-
-deleteAllBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    // 先要求輸入密碼
-    const password = prompt("請輸入密碼以刪除所有訊息：");
-
-    if (password !== "990323") {
-        alert("密碼錯誤，無法刪除訊息！");
-        return; // 密碼錯誤 → 中止
-    }
-
-    const ok = confirm("確定要刪除【聊天大廳】所有訊息嗎？此動作無法復原！");
-    if (!ok) return;
-
-    // 刪 Firebase 裡的資料
-    db.ref("messages").remove();
-
-    // 清空畫面
-    firstPageContent.innerHTML = "";
-});
-
-// ===== 向下箭頭功能 =====
-
-// 點擊 → 回到最新訊息
-scrollDownBtn.addEventListener("click", () => {
-    firstPageContent.scrollTop = firstPageContent.scrollHeight;
-    scrollDownBtn.style.display = "none";
-});
-
-// 偵測是否在最底部
-firstPageContent.addEventListener("scroll", () => {
-    const isAtBottom =
-        firstPageContent.scrollHeight -
-        firstPageContent.scrollTop -
-        firstPageContent.clientHeight < 10;
-
-    scrollDownBtn.style.display = isAtBottom ? "none" : "flex";
-});
-// 選取表單與元素
-const usernameForm = document.getElementById("usernameForm");
-const usernameInput = document.getElementById("username");
-const displayUsername = document.getElementById("displayUsername");
-
-// 當表單提交時
-usernameForm.addEventListener("submit", function(e){
-    e.preventDefault();
-
-    const username = usernameInput.value.trim();
-    if(!username) return alert("請輸入帳號名稱");
-
-    // 存到 Firebase (路徑: users/username)
-    db.ref("users/username").set({
-        name: username,
-        time: Date.now()
-    });
-
-    // 顯示在頁面上
-    displayUsername.textContent = "帳號名稱：" + username;
-
-    // 清空輸入框
-    usernameInput.value = "";
-});
-
-// 頁面載入時從 Firebase 讀取已存在帳號名稱
-db.ref("users/username").once("value").then(snapshot => {
-    const data = snapshot.val();
-    if(data && data.name){
-        displayUsername.textContent = "帳號名稱：" + data.name;
-    }
-});
-
 </script>
+
 </body>
 </html>
 
