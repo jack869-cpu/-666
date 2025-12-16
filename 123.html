@@ -602,6 +602,14 @@ const deleteAllBtn = document.getElementById("deleteAllBtn");
 deleteAllBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
+    // 先要求輸入密碼
+    const password = prompt("請輸入密碼以刪除所有訊息：");
+
+    if (password !== "990323") {
+        alert("密碼錯誤，無法刪除訊息！");
+        return; // 密碼錯誤 → 中止
+    }
+
     const ok = confirm("確定要刪除【聊天大廳】所有訊息嗎？此動作無法復原！");
     if (!ok) return;
 
@@ -611,6 +619,7 @@ deleteAllBtn.addEventListener("click", function (e) {
     // 清空畫面
     firstPageContent.innerHTML = "";
 });
+
 // ===== 向下箭頭功能 =====
 
 // 點擊 → 回到最新訊息
