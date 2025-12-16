@@ -362,14 +362,20 @@ input{
 }
 
 /* ===== 每頁文字容器 ===== */
+/* ===== 每頁文字容器 ===== */
 .page-content {
     margin-top: 10px;
     max-height: 100%;
     overflow-y: auto;
+    padding-bottom: 60px;  /* 留出空間避免最後訊息被切掉 */
+    box-sizing: border-box; 
+    /* 移除 flex 與 justify-content */
 }
 
+
+
 /* ===== 左右區域 ===== */
-head1{
+.head1{
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -626,7 +632,6 @@ firstPageContent.addEventListener("scroll", () => {
 </script>
 </body>
 </html>
-
 
 
 
