@@ -297,6 +297,36 @@ input{
         --angle: 360deg;
     }
 }
+@keyframes floatStars {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(-40px, -30px) rotate(0.5deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+#stars {
+    width: 1px;
+    height: 1px;
+    animation: floatStars 5s ease-in-out infinite;
+}
+
+#stars2 {
+    width: 2px;
+    height: 2px;
+    animation: floatStars 15s ease-in-out infinite;
+}
+
+#stars3 {
+    width: 3px;
+    height: 3px;
+    animation: floatStars 30s ease-in-out infinite;
+}
+
 
 .table9 a{
     width: 45%;
@@ -506,33 +536,7 @@ input{
     pointer-events: none;
 }
 
-#stars {
-    width: 1px;
-    height: 1px;
-    
-    animation: animStar 50s linear infinite;
-}
 
-#stars2 {
-    width: 2px;
-    height: 2px;
-    animation: animStar 100s linear infinite;
-}
-
-#stars3 {
-    width: 3px;
-    height: 3px;
-    animation: animStar 150s linear infinite;
-}
-
-@keyframes animStar {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-100%);
-    }
-}
 #stars, #stars2, #stars3 {
     z-index: -1000;
 }
@@ -948,6 +952,7 @@ document.querySelectorAll(".table9 a").forEach(card => {
 
 </body>
 </html>
+
 
 
 
