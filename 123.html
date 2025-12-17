@@ -611,8 +611,8 @@ function animateTrail(){
     trailNodes.forEach((node, i) => {
         const dx = x - node.offsetLeft;
         const dy = y - node.offsetTop;
-        node.style.left = node.offsetLeft + dx * 0.3 + 'px';
-        node.style.top = node.offsetTop + dy * 0.3 + 'px';
+        node.style.left = node.offsetLeft + dx * 0.7 + 'px';
+        node.style.top = node.offsetTop + dy * 0.7 + 'px';
 
         // 漸變顏色
         node.style.backgroundColor = `hsl(${(Date.now()/10 + i*30)%360}, 100%, 50%)`;
@@ -844,6 +844,7 @@ for(let i = 0; i < TOTAL_TRI; i++){
 
 </body>
 </html>
+
 
 
 
