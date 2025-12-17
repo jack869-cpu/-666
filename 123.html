@@ -8,15 +8,10 @@
 <link rel="stylesheet" href="style.css">
 <style>
 /*  全域設定  */
-
-* {
-    cursor: none;
-}
-    
 body{    
     position: relative;
     min-height: 100vh;
-    background: linear-gradient(-30deg, rgb(131, 131, 230) 0%, rgb(33, 33, 204) 50%, black 50% , gray 100%);
+    background: transparent;
     margin: 0;  /* 避免 body margin 影響 */
 }
 
@@ -43,6 +38,10 @@ a {
     z-index: 1000;      /* 避免被其他元素覆蓋 */
     padding:10px;
 }
+.bg-wrap{
+    pointer-events: none;
+}
+
 .html123::after {
     content: '';
     position: absolute;
@@ -247,8 +246,6 @@ input{
     border-radius: 8px;
     gap: 10px;  
     position: relative;
-    margin: auto 20px auto 0;
-
 }
 
 
@@ -436,38 +433,37 @@ input{
 #scrollDownBtn:hover{
     background: rgba(0,0,0,0.9);
 }
-
-.blurry-lines {
+/* ===== 三重旅行者背景 ===== */
+.bg-wrap{
     position: fixed;
     inset: 0;
-    z-index: 2000;
-    /* 在背景之上 */
-    pointer-events: none;
-    /* 不擋滑鼠與點擊 */
+    z-index: -999;               /* 永遠在最底層 */
+    overflow: hidden;
+    perspective: 800px;
+    background:
+        radial-gradient(circle at center,
+        white 0%,
+        #222 12%,
+        black 60%);
 }
 
-/* .relative {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-} */
-
-  .blurry-lines {
-    width: 0%;
-    height: 0%;
+.tri{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    filter: grayscale(1);
+    transform-style: preserve-3d;
+    opacity: 0;
 }
 
 </style>
 </head>
-
-    
 <body>
+<!-- 三重旅行者背景 -->
+<div class="bg-wrap" aria-hidden="true"></div>
 
-
-<div class="relative min-h-screen">
-    <div class="blurry-lines"></div>
-</div>
-    
 <a href="#" class="html123">首頁</a>
 
 <ul class="html2">
@@ -565,7 +561,7 @@ input{
 <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-database-compat.js"></script>
 
-<script type="module">
+<script>
 // Firebase 設定
 const firebaseConfig = {
   apiKey: "AIzaSyDWsBH-ozVRjYP9YTASPpsV9AuggDfSbDQ",
@@ -732,171 +728,58 @@ document.querySelectorAll(".table9 a").forEach(btn => {
     });
 });
 
+/* ===== 三重旅行者背景產生器 ===== */
+const TOTAL_TRI = 200;
+const bgWrap = document.querySelector(".bg-wrap");
 
+for(let i = 0; i < TOTAL_TRI; i++){
+    const tri = document.createElement("div");
+    tri.className = "tri";
 
+    const size = Math.random() * 50 + 10;
+    const hue = Math.floor(Math.random() * 360);
+    const rotate = Math.random() * 360;
+    const x = (Math.random() - 0.5) * 1000;
+    const y = (Math.random() - 0.5) * 1000;
+    const delay = -i * (10 / TOTAL_TRI);
 
-// 滑鼠動畫的部分
+    tri.style.borderTop = `${size}px solid hsla(${hue},100%,50%,1)`;
+    tri.style.borderLeft = `${size}px solid transparent`;
+    tri.style.borderRight = `${size}px solid transparent`;
+    tri.style.marginLeft = `${-size / 2}px`;
+    tri.style.marginTop = `${-size / 2}px`;
 
-        import p5 from "https://cdn.skypack.dev/p5@1.4.0";
-        class PointLine {
-            constructor(s, p1, p2, thickness = 1) {
-                this.s = s;
-                this.p1 = p1;
-                this.p2 = p2;
-                this.thickness = thickness;
-                this.dotCount = s.ceil(p1.dist(p2));
-                this.modifyFunc = (x, y) => [x, y];
-            }
-
-            draw() {
-                for (let i = 0; i < this.dotCount; i++) {
-                    let x = this.s.map(i, 0, this.dotCount, this.p1.x, this.p2.x);
-                    let y = this.s.map(i, 0, this.dotCount, this.p1.y, this.p2.y);
-                    [x, y] = this.modifyFunc(x, y);
-                    this.s.circle(x, y, this.thickness);
-                }
-            }
-
-            blur(seed = 0, amount = 0) {
-                const blurPower = 1 + this.s.sq(amount);
-                this.dotCount *= blurPower;
-                this.thickness *= (1 - amount);
-
-                this.modifyFunc = (x, y) => {
-                    x += seed * amount * this.s.randomGaussian();
-                    y += seed * amount * this.s.randomGaussian();
-                    return [x, y];
-                };
-            }
+    tri.animate([
+        {
+            opacity: 1,
+            transform: `
+                rotate(${rotate * 1.5}deg)
+                translate3d(${x}px, ${y}px, 1000px)
+                scale(1)
+            `
+        },
+        {
+            opacity: 0,
+            transform: `
+                rotate(${rotate}deg)
+                translate3d(0, 0, -1500px)
+                scale(0)
+            `
         }
+    ],{
+        duration: 10000,
+        delay: delay * 1000,
+        iterations: Infinity,
+        easing: "linear"
+    });
 
-        class PointShape {
-            constructor(s, x, y, r, edgeCount, thickness = 1) {
-                this.lines = [];
-                for (let i = 0; i < edgeCount; i++) {
-                    const a1 = (s.TWO_PI * i) / edgeCount;
-                    const a2 = (s.TWO_PI * (i + 1)) / edgeCount;
+    bgWrap.appendChild(tri);
+}
 
-                    const p1 = s.createVector(
-                        x + r * s.cos(a1),
-                        y + r * s.sin(a1)
-                    );
-                    const p2 = s.createVector(
-                        x + r * s.cos(a2),
-                        y + r * s.sin(a2)
-                    );
-
-                    this.lines.push(new PointLine(s, p1, p2, thickness));
-                }
-            }
-
-            draw() {
-                this.lines.forEach(line => line.draw());
-            }
-
-            blur(seed, amount) {
-                this.lines.forEach(line => line.blur(seed, amount));
-            }
-        }
-
-        const sketch = (s) => {
-            let mousePositions = [];
-            const maxPos = 12;
-            let hueTime = 0;
-
-            let lastMoveTime = Date.now();
-            const idleLimit = 1000;
-
-            let visibility = 1;
-            let targetVisibility = 1;
-
-            let breatheTime = 0;
-            let lastMouse = null;
-
-            s.setup = () => {
-                s.createCanvas(s.windowWidth, s.windowHeight);
-                s.noStroke();
-                s.colorMode(s.HSB, 1);
-                window.addEventListener("mousemove", () => {
-                    lastMoveTime = Date.now();
-
-                });
-            };
-
-            s.draw = () => {
-                const now = Date.now();
-                const idleTime = now - lastMoveTime;
-
-                // ===== 判斷目標顯示狀態 =====
-                if (idleTime > idleLimit) {
-                    targetVisibility = 0.15; // 閒置 → 微弱呼吸光
-                } else {
-                    targetVisibility = 1;    // 活動中 → 全亮
-                }
-
-                // ===== 平滑淡入淡出 =====
-                visibility = s.lerp(visibility, targetVisibility, 0.05);
-
-                // ===== 清除畫面（透明）=====
-                s.clear();
-
-                // ===== 呼吸光（只在閒置時明顯）=====
-                breatheTime += 0.02;
-                const breathe =
-                    idleTime > idleLimit
-                        ? 0.5 + 0.5 * Math.sin(breatheTime)
-                        : 1;
-
-                // ===== 滑鼠速度計算 =====
-                let speed = 0;
-                if (lastMouse) {
-                    speed = s.dist(s.mouseX, s.mouseY, lastMouse.x, lastMouse.y);
-                }
-                lastMouse = { x: s.mouseX, y: s.mouseY };
-
-                // ===== 顏色流動速度受滑鼠影響 =====
-                hueTime += 0.002 + speed * 0.0005;
-
-                // ===== 記錄滑鼠軌跡 =====
-                const mousePos = s.createVector(s.mouseX, s.mouseY);
-                mousePositions.unshift(mousePos);
-                if (mousePositions.length > maxPos) mousePositions.pop();
-
-    // ===== 畫形狀 =====
-        mousePositions.forEach((pos, i) => {
-            s.blendMode(s.ADD);
-
-            const ratio = i / mousePositions.length;
-
-            const hue = (hueTime + ratio * 0.15) % 1;
-            const alpha = 0.3 * visibility * breathe;
-
-            s.fill(hue, 0.7, 0.9, alpha);
-
-            const shape = new PointShape(s, pos.x, pos.y, 20, 60, 6);
-            shape.blur(10, ratio);
-            shape.draw();
-
-            s.blendMode(s.BLEND);
-        });
-    };
-
-    s.windowResized = () => {
-        s.resizeCanvas(s.windowWidth, s.windowHeight);
-    };
-};
-
-new p5(sketch, document.querySelector(".blurry-lines"));
-
-    
 </script>
 
 </body>
 </html>
-
-
-
-
 
 
 
