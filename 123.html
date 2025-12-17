@@ -13,7 +13,6 @@ body{
     min-height: 100vh;
     background: transparent;
     margin: 0;  /* 避免 body margin 影響 */
-    cursor: none; /* 新增這行，滑鼠消失 */
 }
 a {
     text-decoration: none;
@@ -457,19 +456,6 @@ input{
     transform-style: preserve-3d;
     opacity: 0;
 }
-#mouseTrail {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    pointer-events: none;
-    background-color: red; /* 初始顏色 */
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-}
 </style>
 </head>
 <body>
@@ -574,55 +560,6 @@ input{
 <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-database-compat.js"></script>
 
 <script>
-
-
-// 保存拖尾節點
-const trailNodes = [];
-const TRAIL_LENGTH = 10; // 拖尾長度
-
-for(let i=0; i<TRAIL_LENGTH; i++){
-    const node = document.createElement('div');
-    node.style.position = 'fixed';
-    node.style.width = '30px';
-    node.style.height = '30px';
-    node.style.borderRadius = '50%';
-    node.style.pointerEvents = 'none';
-    node.style.backgroundColor = `hsl(${i*20}, 100%, 50%)`;
-    node.style.mixBlendMode = 'difference';
-    node.style.transform = 'translate(-50%, -50%)';
-    node.style.zIndex = 9999;
-    document.body.appendChild(node);
-    trailNodes.push(node);
-}
-
-let mouse = { x: window.innerWidth/2, y: window.innerHeight/2 };
-window.addEventListener('mousemove', e => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
-
-function animateTrail(){
-    let x = mouse.x;
-    let y = mouse.y;
-
-    trailNodes.forEach((node, i) => {
-        const dx = x - node.offsetLeft;
-        const dy = y - node.offsetTop;
-        node.style.left = node.offsetLeft + dx * 0.7 + 'px';
-        node.style.top = node.offsetTop + dy * 0.7 + 'px';
-
-        // 漸變顏色
-        node.style.backgroundColor = `hsl(${(Date.now()/10 + i*30)%360}, 100%, 50%)`;
-
-        // 下一個節點跟著上一個節點
-        x = node.offsetLeft;
-        y = node.offsetTop;
-    });
-
-    requestAnimationFrame(animateTrail);
-}
-
-animateTrail();
 // Firebase 設定
 const firebaseConfig = {
   apiKey: "AIzaSyDWsBH-ozVRjYP9YTASPpsV9AuggDfSbDQ",
