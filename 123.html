@@ -920,6 +920,28 @@ document.querySelectorAll(".table9 a").forEach(card => {
         card.style.setProperty("background-image", `var(--light)`);
     });
 });
+document.querySelectorAll(".table9 a").forEach(card => {
+    card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty(
+            "--light",
+            `radial-gradient(circle at ${x}px ${y}px,
+             rgba(255,255,255,0.9),
+             transparent 60%)`
+        );
+
+        card.style.backgroundImage = "var(--light)";
+    });
+
+    // ⭐ 關鍵：滑鼠移開時復原
+    card.addEventListener("mouseleave", () => {
+        card.style.backgroundImage = "";
+        card.style.removeProperty("--light");
+    });
+});
 
 
 
