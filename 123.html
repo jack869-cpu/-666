@@ -473,7 +473,6 @@ input{
 </style>
 </head>
 <body>
-    <div id="mouseTrail"></div>
 <!-- 三重旅行者背景 -->
 <div class="bg-wrap" aria-hidden="true"></div>
 
@@ -575,13 +574,11 @@ input{
 <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-database-compat.js"></script>
 
 <script>
-    const trail = document.createElement('div');
-trail.id = 'mouseTrail';
-document.body.appendChild(trail);
+
 
 // 保存拖尾節點
 const trailNodes = [];
-const TRAIL_LENGTH = 5; // 拖尾長度
+const TRAIL_LENGTH = 10; // 拖尾長度
 
 for(let i=0; i<TRAIL_LENGTH; i++){
     const node = document.createElement('div');
@@ -844,7 +841,6 @@ for(let i = 0; i < TOTAL_TRI; i++){
 
 </body>
 </html>
-
 
 
 
