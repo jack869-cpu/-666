@@ -37,9 +37,7 @@ a {
     z-index: 1000;      /* 避免被其他元素覆蓋 */
     padding:10px;
 }
-.bg-wrap{
-    pointer-events: none;
-}
+
 
 .html123::after {
     content: '';
@@ -439,11 +437,57 @@ input{
     z-index: -999;               /* 永遠在最底層 */
     overflow: hidden;
     perspective: 800px;
+    pointer-events: none;
     background:
         radial-gradient(circle at center,
         white 0%,
         #222 12%,
         black 60%);
+}
+/* ===== 星空背景（CSS Parallax Stars）===== */
+#stars, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    pointer-events: none;
+}
+
+#stars {
+    width: 1px;
+    height: 1px;
+    
+    animation: animStar 50s linear infinite;
+}
+
+#stars2 {
+    width: 2px;
+    height: 2px;
+    animation: animStar 100s linear infinite;
+}
+
+#stars3 {
+    width: 3px;
+    height: 3px;
+    animation: animStar 150s linear infinite;
+}
+
+@keyframes animStar {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+#stars, #stars2, #stars3 {
+    z-index: -1000;
+}
+
+.tri {
+    z-index: -900;
 }
 
 .tri{
@@ -460,7 +504,12 @@ input{
 </head>
 <body>
 <!-- 三重旅行者背景 -->
-<div class="bg-wrap" aria-hidden="true"></div>
+<div class="bg-wrap" aria-hidden="true">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
 
 <a href="#" class="html123">首頁</a>
 
@@ -773,6 +822,33 @@ for(let i = 0; i < TOTAL_TRI; i++){
 
     bgWrap.appendChild(tri);
 }
+/* ===== 星空 box-shadow 生成器 ===== */
+function generateStars(el, count, maxX, maxY) {
+    const shadows = [];
+    for (let i = 0; i < count; i++) {
+        const x = Math.floor(Math.random() * maxX);
+        const y = Math.floor(Math.random() * maxY);
+        shadows.push(`${x}px ${y}px #fff`);
+    }
+    el.style.boxShadow = shadows.join(", ");
+}
+
+// 依螢幕大小產生
+const width = window.innerWidth;
+const height = window.innerHeight * 2;
+
+// 三層星星（數量你可以自己調）
+generateStars(document.getElementById("stars"), 600, width, height);
+generateStars(document.getElementById("stars2"), 300, width, height);
+generateStars(document.getElementById("stars3"), 150, width, height);
+window.addEventListener("resize", () => {
+    const w = window.innerWidth;
+    const h = window.innerHeight * 2;
+
+    generateStars(document.getElementById("stars"), 600, w, h);
+    generateStars(document.getElementById("stars2"), 300, w, h);
+    generateStars(document.getElementById("stars3"), 150, w, h);
+});
 
 </script>
 
