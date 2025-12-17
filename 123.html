@@ -310,7 +310,6 @@ input{
     padding: 20% 20%;
     margin: 5%;
     font-size: 2em;
-    background-color: yellow;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -320,14 +319,66 @@ input{
     writing-mode: horizontal-tb;
     text-orientation: mixed;
 }
+.table9 a{
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: rgb(38, 13, 226); 
+    color: black;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: box-shadow 0.4s ease, transform 0.4s ease, background-color 0.3s;
+}
+.table9 a::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+
+    background: radial-gradient(
+        circle at 80px 40px,
+        rgba(255,255,255,0.9),
+        transparent 60%
+    );
+}
+
+.table9 a .circleLight{
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    background: radial-gradient(
+        circle at 80px 40px,
+        rgba(255,255,255,0.9),
+        transparent 60%
+    );
+}
 
 .table9 a:hover{
-    background-color: orange;
+    background-color: rgb(68, 206, 237);
     color:white;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    transform: scale(1.05);
 }
 
 .table9 a:active{
     background-color: red;
+}
+.table9 a:hover::before{
+    opacity: 0.4;
+}
+
+.card-text{
+    position: relative;
+    z-index: 1;
+    font-size: 2em;
 }
 
 /*  橫向滑動  */
@@ -586,7 +637,10 @@ input{
     </div>
 
     <div class="table9">   
-        <a href="#" data-target="page-1">訊息</a>
+          <a href="#" data-target="page-1" class="card">
+    <span class="circleLight"></span>
+    <span class="card-text">訊息</span>
+  </a>
         <a href="#" data-target="page-2">個人</a>
         <a href="#" data-target="page-3">3</a>
         <a href="#" data-target="page-4">4</a>
@@ -849,6 +903,25 @@ window.addEventListener("resize", () => {
     generateStars(document.getElementById("stars2"), 300, w, h);
     generateStars(document.getElementById("stars3"), 150, w, h);
 });
+
+document.querySelectorAll(".table9 a").forEach(card => {
+    card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty(
+            "--light",
+            `radial-gradient(circle at ${x}px ${y}px,
+             rgba(255,255,255,0.9),
+             transparent 60%)`
+        );
+
+        card.style.setProperty("background-image", `var(--light)`);
+    });
+});
+
+
 
 </script>
 
