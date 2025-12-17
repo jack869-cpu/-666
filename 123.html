@@ -555,6 +555,47 @@ input{
     transform-style: preserve-3d;
     opacity: 0;
 }
+/* ===== 首頁 SHADOW DANCE 文字效果 ===== */
+.shadow-dance-text{
+    display: inline-block;
+    font-size: 40px;               /* 跟你原本一致 */
+    font-weight: bold;
+    color: #fff;
+    text-shadow:
+        4px 4px 0 #ff005e,
+        8px 8px 0 #00d4ff;
+    animation: shadow-dance 2s infinite;
+}
+.shadow-dance-text{
+    animation: shadow-dance 2s infinite, bounce 2s infinite;
+    font-style: italic;
+
+}
+
+@keyframes bounce{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-4px); }
+}
+
+/* 動畫本體 */
+@keyframes shadow-dance{
+    0%,100%{
+        text-shadow:
+            4px 4px 0 #ff005e,
+            8px 8px 0 #00d4ff;
+    }
+    50%{
+        text-shadow:
+            -4px -4px 0 #00d4ff,
+            -8px -8px 0 #ff005e;
+    }
+}
+
+/* 可選：滑過首頁時更明顯 */
+.html123:hover .shadow-dance-text{
+    animation-duration: 1s;
+}
+
 </style>
 </head>
 <body>
@@ -566,7 +607,9 @@ input{
 </div>
 
 
-<a href="#" class="html123">首頁</a>
+<a href="#" class="html123">
+    <span class="shadow-dance-text">首頁</span>
+</a>
 
 <ul class="html2">
     <div class="html3">            
