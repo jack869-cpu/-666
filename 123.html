@@ -7,6 +7,8 @@
 <title>Document</title>
 <link rel="stylesheet" href="style.css">
 <style>
+ @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+   
 /*  全域設定  */
 body{    
     position: relative;
@@ -595,10 +597,119 @@ input{
 .html123:hover .shadow-dance-text{
     animation-duration: 1s;
 }
+/* ===== 進站動畫 Intro ===== */
+#intro{
+    position: fixed;
+    inset: 0;
+    background: #222;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+#intro.hide{
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 字體 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
+
+#intro *{
+    box-sizing: border-box;
+    font-family: 'Pacifico', cursive;
+    font-style: italic;
+    letter-spacing: 0.08em; /* 微拉開，更瀟灑 */
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    position: relative;
+    transform-style: preserve-3d;
+    animation: introRotate 7s ease-in-out infinite alternate;
+}
+
+.box span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    font-weight: normal;
+    text-shadow:
+        0 6px 12px rgba(0,0,0,.35),
+        0 0 8px rgba(255,255,255,.15);
+    transform:
+        translate(-50%, -50%)
+        rotateX(calc(var(--i) * 22.5deg))
+        translateZ(120px);
+
+    font-size: 3.5em;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    padding: 0 12px;
+    text-shadow: 0 10px 15px rgba(0,0,0,.4);
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.5) 90%,
+        transparent
+    );
+}
+
+.box span i:nth-child(1){
+    color: #5c5fc4;
+    font-style: normal;
+}
+.box span i:nth-child(2){
+    color: #c4c15c;
+    font-style: normal;
+}
+
+@keyframes introRotate{
+    0%{
+        transform: perspective(500px) rotateX(0deg) rotate(5deg);
+    }
+    100%{
+        transform: perspective(50px) rotateX(360deg) rotate(5deg);
+    }
+}
 
 </style>
 </head>
 <body>
+<!-- ===== 進站介紹動畫 ===== -->
+<div id="intro">
+  <div class="container">
+    <div class="box">
+      <span style="--i:1"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:2"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:3"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:4"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:5"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:6"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:7"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:8"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:9"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:10"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:11"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:12"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:13"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:14"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:15"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:16"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+    </div>
+  </div>
+</div>
+
 <!-- 三重旅行者背景 -->
 <div class="bg-wrap" aria-hidden="true">
     <div id="stars"></div>
@@ -988,6 +1099,16 @@ document.querySelectorAll(".table9 a").forEach(card => {
         card.style.removeProperty("--light");
     });
 });
+
+window.addEventListener("load", () => {
+    const intro = document.getElementById("intro");
+
+    // 播放 4.5 秒後淡出
+    setTimeout(() => {
+        intro.classList.add("hide");
+    }, 4500);
+});
+
 
 
 
