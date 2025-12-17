@@ -320,6 +320,7 @@ input{
     text-orientation: mixed;
 }
 .table9 a{
+    font-size: 2em;
     position: relative;
     overflow: hidden;
     border-radius: 12px;
@@ -378,7 +379,6 @@ input{
 .card-text{
     position: relative;
     z-index: 1;
-    font-size: 2em;
 }
 
 /*  橫向滑動  */
@@ -936,7 +936,6 @@ document.querySelectorAll(".table9 a").forEach(card => {
         card.style.backgroundImage = "var(--light)";
     });
 
-    // ⭐ 關鍵：滑鼠移開時復原
     card.addEventListener("mouseleave", () => {
         card.style.backgroundImage = "";
         card.style.removeProperty("--light");
