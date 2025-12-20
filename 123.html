@@ -1,250 +1,246 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>  
 <html lang="en">
 <head>
-   
+    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet" href="style.css">
 <style>
- @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-   
-/*  全域設定  */
-body{    
-    position: relative;
-    min-height: 100vh;
-    background: transparent;
-    margin: 0;  /* 避免 body margin 影響 */
+ @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+  
+/*  全域設定  */
+body{    
+    position: relative;
+    min-height: 100vh;
+    background: transparent;
+    margin: 0;  /* 避免 body margin 影響 */
 }
 a {
-    text-decoration: none;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-/*  頂部首頁  */
+/*  頂部首頁  */
 .html123{
-    display: block;
-    width: 85%;
-    max-width: 1690px;
-    height: 50px;
-    color: aqua;
-    background-color: rgb(133,133,133,0.8);
-    text-align: center;
-    line-height: 50px;  /* 垂直置中 */
-    border-radius: 15px;
-    font-size: 40px;
-    margin: 20px auto;
-    position: sticky;   /* 固定在頂部 */
-    top: 0;
-    z-index: 1000;      /* 避免被其他元素覆蓋 */
-    padding:10px;
+    display: block;
+    width: 85%;
+    max-width: 1690px;
+    height: 50px;
+    color: aqua;
+    background-color: rgb(133,133,133,0.8);
+    text-align: center;
+    line-height: 50px;  /* 垂直置中 */
+    border-radius: 15px;
+    font-size: 40px;
+    margin: 20px auto;
+    position: sticky;   /* 固定在頂部 */
+    top: 0;
+    z-index: 1000;      /* 避免被其他元素覆蓋 */
+    padding:10px;
 }
 
 
 .html123::after {
-    content: '';
-    position: absolute;
-    bottom: 7.5%;
-    left: 45%;
-    width: 0;
-    height: 10px;
-    border-radius: 5px;
-    background-color: rgb(0, 0, 0,0.7);
-    transition: width 0.3s ease;
-           
+    content: '';
+    position: absolute;
+    bottom: 7.5%;
+    left: 45%;
+    width: 0;
+    height: 10px;
+    border-radius: 5px;
+    background-color: rgb(0, 0, 0,0.7);
+    transition: width 0.3s ease;
+            
 
 }
 
 .html123:hover::after {
-     width: 10%;
+     width: 10%;
 }
 
-/*  導覽列與欄位  */
+/*  導覽列與欄位  */
 .html1{
-    width: auto;
-    text-align: 1000px;
+    width: auto;
+    text-align: 1000px;
 }
 
 .html2{
-    list-style-type:none;
-    margin: 40px auto; /* 距離灰色框固定 */
-    padding: 0;
+    list-style-type:none;
+    margin: 40px auto; /* 距離灰色框固定 */
+    padding: 0;
 }
 
 .html3{
-    display: flex;
-    justify-content: center;  /* 三個按鈕水平置中 */
-    align-items: center;
-    gap: 20px;                /* 固定間距 */
+    display: flex;
+    justify-content: center;  /* 三個按鈕水平置中 */
+    align-items: center;
+    gap: 20px;                /* 固定間距 */
 }
 
 .html, .html4{
-    width: 420px;
-    display: inline-block;
-    text-decoration: none;
-    font-size: 50px;
-    font-family: '標楷體';
-    font-weight: bold;
-    text-align: center;    
+    width: 420px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 50px;
+    font-family: '標楷體';
+    font-weight: bold;
+    text-align: center;    
 }
 
 .html{
-    border-left:20px solid red;
-    border-right:20px solid red;
-    background-color: green;
+    border-left:20px solid red;
+    border-right:20px solid red;
+    background-color: green;
 }
 
 .html4{
-    border-right:20px solid blanchedalmond;
-    background-color: grey;
+    border-right:20px solid blanchedalmond;
+    background-color: grey;
 }
 
 .html4:hover{
-    background-color: lightskyblue;
-    color:white;
+    background-color: lightskyblue;
+    color:white;
 }
 
 .html4:active{
-    background-color: red;
-    border-color:red ;
+    background-color: red;
+    border-color:red ;
 }
 
-/*  小按鈕導覽  */
+/*  小按鈕導覽  */
 .nav1 a, .nav2 a, .nav3 a{
-    display: flex;
-    flex-direction: column;
-    border: 5px solid lightskyblue;
-    border-radius:30px;
-    padding: 10px;
-    text-align: center;
-    width: 100px;
-    margin: 10px auto;
-    color:black;    
+    display: flex;
+    flex-direction: column;
+    border: 5px solid lightskyblue;
+    border-radius:30px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    margin: 10px auto;
+    color:black;    
 }
 
 .nav1 a:hover, .nav2 a:hover, .nav3 a:hover{
-    background-color: lightskyblue;
-    color:white;
+    background-color: lightskyblue;
+    color:white;
 }
 
 .nav1 a:active, .nav2 a:active, .nav3 a:active{
-    background-color: red;
-    border-color:red ;
+    background-color: red;
+    border-color:red ;
 }
 
-/*  表單區  */
+/*  表單區  */
 form.css.table{
-    width: 80%;
-    height: 700px;
-    background-color: black;
-    border-radius: 5%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    width: 80%;
+    height: 700px;
+    background-color: black; 
+    border-radius: 5%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .form{
-    height: 80%;
-    /* background-color: gray; */
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    width: 100%;
-    max-width: 40rem;  
-    margin: 0 auto;
+    height: 80%;
+    /* background-color: gray; */
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 40rem;   
+    margin: 0 auto;
 }
 
 .square{
-    width: 50%;
-    height: 80%;
-    margin-top: 20px;
-    background-color: white;
-    border-radius: 10%;
+    width: 50%;
+    height: 80%;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10%;
 }
 
-/* form label{
-    font-size: 40px;
-    color: white;
-    margin: 0 auto;
-    padding: 30px;
-} */
+
 
 form {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .the_text {
-    width: 100%;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 0.8em;
-    background: none;
-    color: white;
-    border: 2px solid white;
-    border-radius: 0.5rem;
-    outline: none;
-           
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.8em;
+    background: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    outline: none;
+            
 }
 
 .the_text:hover {
-    border-color: blue;
+    border-color: blue;
 }
 
 .the_text:focus {
-    border-color: aqua;
+    border-color: aqua;
 }
 
 .the_label {
-    position: absolute;
-    color: white;
-    top: 0.6em;
-    font-size:20px;
-    left: 1em;
-    cursor: text;
-    user-select: none;
-    transition: top 200ms ease-in, font-size 200ms ease-in;
-           
+    position: absolute;
+    color: white;
+    top: 0.6em;
+    font-size:20px;
+    left: 1em;
+    cursor: text;
+    user-select: none;
+    transition: top 200ms ease-in, font-size 200ms ease-in;
+            
 }
 
 .the_text:focus ~ .the_label,
 .the_text:not(:placeholder-shown) ~ .the_label {
-    top: -1em;
-    font-size: 0.8em;
+    top: -1em;
+    font-size: 0.8em;
 }
 
 .sent{
-    background-color: rgba(255, 255, 255, 0.2);          
+    background-color: rgba(255, 255, 255, 0.2);           
 }
 
 input{
-    font-size: 20px;
-    margin: 5px auto;
+    font-size: 20px;
+    margin: 5px auto;
 }
 
-/*  九宮格  */
+/*  九宮格  */
 .all_table{
-    display: flex;
-    justify-content: space-around;
-    align-items: stretch;
-    gap: 20px;
-    flex-wrap: nowrap; /* 避免換行 */
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: nowrap; /* 避免換行 */
 }
 
 
 /* 九宮格按鈕 */
 .table9 {
-    width: 30%;
-    height: 630px; /* 與兄弟元素（scroll-container）齊高 */
-    margin: auto 10px auto 5px;
-    background-color: gray;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-radius: 8px;
-    gap: 10px;  
-    position: relative;
+    width: 30%;
+    height: 630px; /* 與兄弟元素（scroll-container）齊高 */
+    margin: auto 10px auto 5px;
+    background-color: gray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 8px;
+    gap: 10px;  
+    position: relative;
 }
 
 
@@ -252,435 +248,472 @@ input{
 
 
 .table9::after,
-.table9::before {        
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-image: conic-gradient(from var(--angle),transparent 80%,rgba(0, 255, 0, 0.9));
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    padding: 2%;
-    border-radius: 8px;
+.table9::before {        
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: conic-gradient(from var(--angle),transparent 80%,rgba(0, 255, 0, 0.9));
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    padding: 2%;
+    border-radius: 8px;
 }
 
 .table9::after{
-    animation: 3s spin1 linear infinite;
+    animation: 3s spin1 linear infinite;
 }
 
 .table9::before{
-    animation: 3s spin2 linear infinite;
+    animation: 3s spin2 linear infinite;
 }
 
 @property --angle {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 0deg;
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
 }
 
 
 @keyframes spin2{
-    from {
-        --angle: -180deg;
-    }
-    to {
-        --angle: 180deg;
-    }
+    from {
+        --angle: -180deg;
+    }
+    to {
+        --angle: 180deg;
+    }
 }
 
 @keyframes spin1 {
-    from {
-        --angle: 0deg;
-    }
+    from {
+        --angle: 0deg;
+    }
 
-    to {
-        --angle: 360deg;
-    }
+    to {
+        --angle: 360deg;
+    }
 }
 @keyframes floatStars {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(-40px, -30px) rotate(0.5deg);
-    }
-    100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(-40px, -30px) rotate(0.5deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
 }
 
 #stars {
-    width: 1px;
-    height: 1px;
-    animation: floatStars 5s ease-in-out infinite;
+    width: 1px;
+    height: 1px;
+    animation: floatStars 5s ease-in-out infinite;
 }
 
 #stars2 {
-    width: 2px;
-    height: 2px;
-    animation: floatStars 15s ease-in-out infinite;
+    width: 2px;
+    height: 2px;
+    animation: floatStars 15s ease-in-out infinite;
 }
 
 #stars3 {
-    width: 3px;
-    height: 3px;
-    animation: floatStars 30s ease-in-out infinite;
+    width: 3px;
+    height: 3px;
+    animation: floatStars 30s ease-in-out infinite;
 }
 
 
 .table9 a{
-    width: 45%;
-    aspect-ratio: 1 / 2;
-    min-width: 0;
-    min-height: 0;
-    color: black;
-    text-align: center;
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 20% 20%;
-    margin: 5%;
-    font-size: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    word-break: break-word;
-    white-space: normal;
-    writing-mode: horizontal-tb;
-    text-orientation: mixed;
+    width: 45%;
+    aspect-ratio: 1 / 2;
+    min-width: 0;
+    min-height: 0;
+    color: black;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 20% 20%;
+    margin: 5%;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+    white-space: normal;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
 }
 .table9 a{
-    font-size: 2em;
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    background-color: rgb(230, 193, 106);
-    color: black;
-    text-decoration: none;
+    font-size: 2em;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: rgb(230, 193, 106); 
+    color: black;
+    text-decoration: none;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    transition: box-shadow 0.4s ease, transform 0.4s ease, background-color 0.3s;
+    transition: box-shadow 0.4s ease, transform 0.4s ease, background-color 0.3s;
 }
 .table9 a::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
 
-    background: radial-gradient(
-        circle at 80px 40px,
-        rgba(255,255,255,0.9),
-        transparent 60%
-    );
+    background: radial-gradient(
+        circle at 80px 40px,
+        rgba(255,255,255,0.9),
+        transparent 60%
+    );
 }
 
 .table9 a .circleLight{
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 
-    background: radial-gradient(
-        circle at 80px 40px,
-        rgba(255,255,255,0.9),
-        transparent 60%
-    );
+    background: radial-gradient(
+        circle at 80px 40px,
+        rgba(255,255,255,0.9),
+        transparent 60%
+    );
 }
 
 .table9 a:hover{
-    background-color: rgb(68, 206, 237);
-    color:white;
-    box-shadow: 0 0 40px rgba(0,0,0,0.7);
-    transform: scale(1.05);
+    background-color: rgb(68, 206, 237);
+    color:white;
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+    transform: scale(1.05);
 }
 
 .table9 a:active{
-    background-color: red;
+    background-color: red;
 }
 .table9 a:hover::before{
-    opacity: 0.4;
+    opacity: 0.4;
 }
 
 .card-text{
-    position: relative;
-    z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
-/*  橫向滑動  */
+/*  橫向滑動  */
 .scroll-container{
-    display: block;
-    margin: 50px auto;
-    text-align: center;
-    width: 65%;
-    height:600px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding: 20px 0;
-    background: rgb(133, 133, 133, 0.15);
-    border-radius: 8px;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
+    display: block;
+    margin: 50px auto;
+    text-align: center;
+    width: 65%;
+    height:600px;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    white-space: nowrap; 
+    padding: 20px 0;
+    background: rgb(133, 133, 133, 0.15);
+    border-radius: 8px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
 }
 
 .scroll-page {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    width: 90%;
-    height: 95%;
-    background: linear-gradient(to bottom,rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 25%,transparent 50%,transparent 85%,rgba(255, 255, 255, 0.3) 100%);
-    border-radius: 8px;
-    margin: 0 5%;
-    padding: 20px;  
-    scroll-snap-align:center;
-    min-height: 0;
-    flex: 1;
-    overflow-y: hidden;
-   
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 90%; 
+    height: 95%; 
+    background: linear-gradient(to bottom,rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 25%,transparent 50%,transparent 85%,rgba(255, 255, 255, 0.3) 100%);
+    border-radius: 8px;
+    margin: 0 5%;
+    padding: 20px;  
+    scroll-snap-align:center;
+    min-height: 0;
+    flex: 1;
+    overflow-y: hidden;
+    
 }
 
-.scroll-page h1{            
-    position: sticky;          
-    top: 0;
-    z-index: 1000;            
+.scroll-page h1{            
+    position: sticky;           
+    top: 0;
+    z-index: 1000;            
 }
 
 /* ===== 每頁文字容器 ===== */
 /* ===== 每頁文字容器 ===== */
 .page-content {
-    margin-top: 10px;
-    max-height: 100%;
-    overflow-y: auto;
-    padding-bottom: 60px;  /* 留出空間避免最後訊息被切掉 */
-    box-sizing: border-box;
-    /* 移除 flex 與 justify-content */
+    margin-top: 10px;
+    max-height: 100%;
+    overflow-y: auto;
+    padding-bottom: 60px;  /* 留出空間避免最後訊息被切掉 */
+    box-sizing: border-box; 
+    /* 移除 flex 與 justify-content */
 }
 
 
 
 /* ===== 左右區域 ===== */
 .head1{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 .left{
-    font-size: 50px;
-    background-color: gray;    
-    width: 700px;
-    text-align: center;
-    margin: 20px;
-    padding: 25px;
+    font-size: 50px;
+    background-color: gray;    
+    width: 700px;
+    text-align: center;
+    margin: 20px;
+    padding: 25px;
 }
 
 .right{
-    font-size: 30px;
-    background-color: gray;
-    width: 300px;
-    margin: 20px;
-    padding-top:20px;
-    padding-bottom: 20px;
+    font-size: 30px;
+    background-color: gray;
+    width: 300px;
+    margin: 20px;
+    padding-top:20px;
+    padding-bottom: 20px;
 }
 /* ===== 聊天室向下箭頭 ===== */
 #scrollDownBtn{
-    position: absolute;     /* ← 改成 absolute */
-    right: 20px;
-    bottom: 20px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 50;
-    display: none;
+    position: absolute;     /* ← 改成 absolute */
+    right: 20px;
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    display: none;
 }
 
 
 #scrollDownBtn:hover{
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.9);
 }
 /* ===== 三重旅行者背景 ===== */
 .bg-wrap{
-    position: fixed;
-    inset: 0;
-    z-index: -999;               /* 永遠在最底層 */
-    overflow: hidden;
-    perspective: 800px;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at center,
-        white 0%,
-        #222 12%,
-        black 60%);
+    position: fixed;
+    inset: 0;
+    z-index: -999;               /* 永遠在最底層 */
+    overflow: hidden;
+    perspective: 800px;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at center,
+        white 0%,
+        #222 12%,
+        black 60%);
 }
 /* ===== 星空背景（CSS Parallax Stars）===== */
 #stars, #stars2, #stars3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: transparent;
-    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    pointer-events: none;
 }
 
 
 #stars, #stars2, #stars3 {
-    z-index: -1000;
+    z-index: -1000;
 }
 
 .tri {
-    z-index: -900;
+    z-index: -900;
 }
 
 .tri{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    filter: grayscale(1);
-    transform-style: preserve-3d;
-    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    filter: grayscale(1);
+    transform-style: preserve-3d;
+    opacity: 0;
 }
 /* ===== 首頁 SHADOW DANCE 文字效果 ===== */
 .shadow-dance-text{
-    display: inline-block;
-    font-size: 40px;               /* 跟你原本一致 */
-    font-weight: bold;
-    color: #fff;
-    text-shadow:
-        4px 4px 0 #ff005e,
-        8px 8px 0 #00d4ff;
-    animation: shadow-dance 2s infinite;
+    display: inline-block;
+    font-size: 40px;               /* 跟你原本一致 */
+    font-weight: bold;
+    color: #fff;
+    text-shadow:
+        4px 4px 0 #ff005e,
+        8px 8px 0 #00d4ff;
+    animation: shadow-dance 2s infinite;
 }
 .shadow-dance-text{
-    animation: shadow-dance 2s infinite, bounce 2s infinite;
-    font-style: italic;
+    animation: shadow-dance 2s infinite, bounce 2s infinite;
+    font-style: italic;
 
 }
 
 @keyframes bounce{
-    0%,100%{ transform: translateY(0); }
-    50%{ transform: translateY(-4px); }
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-4px); }
 }
 
 /* 動畫本體 */
 @keyframes shadow-dance{
-    0%,100%{
-        text-shadow:
-            4px 4px 0 #ff005e,
-            8px 8px 0 #00d4ff;
-    }
-    50%{
-        text-shadow:
-            -4px -4px 0 #00d4ff,
-            -8px -8px 0 #ff005e;
-    }
+    0%,100%{
+        text-shadow:
+            4px 4px 0 #ff005e,
+            8px 8px 0 #00d4ff;
+    }
+    50%{
+        text-shadow:
+            -4px -4px 0 #00d4ff,
+            -8px -8px 0 #ff005e;
+    }
 }
 
 /* 可選：滑過首頁時更明顯 */
 .html123:hover .shadow-dance-text{
-    animation-duration: 1s;
+    animation-duration: 1s;
 }
 /* ===== 進站動畫 Intro ===== */
 #intro{
-    position: fixed;
-    inset: 0;
-    background: #222;
-    z-index: 99999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 1s ease, visibility 1s ease;
+    position: fixed;
+    inset: 0;
+    background: #222;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease, visibility 1s ease;
 }
 
 #intro.hide{
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
 }
 
 /* 字體 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
 #intro *{
-    box-sizing: border-box;
-    font-family: 'Pacifico', cursive;
-    font-style: italic;
-    letter-spacing: 0.08em; /* 微拉開，更瀟灑 */
+    box-sizing: border-box;
+    font-family: 'Rock Salt', cursive;
+    letter-spacing: 0.12em;
 }
+
 
 
 .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box{
-    position: relative;
-    transform-style: preserve-3d;
-    animation: introRotate 7s ease-in-out infinite alternate;
+    position: relative;
+    width: 600px;
+    height: 600px;
+    transform-style: preserve-3d;
+    animation: introRotate 7s ease-in-out forwards;
 }
 
-.box span{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform-style: preserve-3d;
-    font-weight: normal;
-    text-shadow:
-        0 6px 12px rgba(0,0,0,.35),
-        0 0 8px rgba(255,255,255,.15);
-    transform:
-        translate(-50%, -50%)
-        rotateX(calc(var(--i) * 22.5deg))
-        translateZ(120px);
 
-    font-size: 3.5em;
-    font-weight: bold;
-    color: white;
-    white-space: nowrap;
-    padding: 0 12px;
-    text-shadow: 0 10px 15px rgba(0,0,0,.4);
-    background: linear-gradient(
-        90deg,
-        rgba(0,0,0,0.1),
-        rgba(0,0,0,0.5) 90%,
-        transparent
-    );
-}
 
 .box span i:nth-child(1){
-    color: #5c5fc4;
-    font-style: normal;
+    color: #5c5fc4;
+    font-style: normal;
 }
 .box span i:nth-child(2){
-    color: #c4c15c;
-    font-style: normal;
+    color: #c4c15c;
+    font-style: normal;
+}
+.scribble{
+    display: inline-block;
+    animation: scribble 0.35s infinite alternate;
+    will-change: transform;
+}
+@keyframes scribble {
+    0%   { transform: translate(0,0); }
+    25%  { transform: translate(1px,-1px); }
+    50%  { transform: translate(-1px,1px); }
+    75%  { transform: translate(1px,1px); }
+    100% { transform: translate(0,0); }
 }
 
 @keyframes introRotate{
-    0%{
-        transform: perspective(500px) rotateX(0deg) rotate(5deg);
-    }
-    100%{
-        transform: perspective(50px) rotateX(360deg) rotate(5deg);
-    }
+    from{
+        transform: rotateX(0deg) rotateY(8deg);
+    }
+    to{
+        transform: rotateX(360deg) rotateY(8deg);
+    }
+}
+
+
+
+
+
+
+
+/* 奇數行 */
+.box span:nth-child(odd){
+    transform:
+        translate(-50%, -50%)
+        rotateX(calc(var(--i) * 22.5deg))
+        translateZ(120px)
+        rotateZ(-2deg);
+}
+#intro{
+    perspective: 800px;
+    perspective-origin: center center;
+}
+
+
+/* 偶數行 */
+.box span:nth-child(even){
+    transform:
+        translate(-50%, -50%)
+        rotateX(calc(var(--i) * 22.5deg))
+        translateZ(120px)
+        rotateZ(2.5deg);
+}
+#intro.hide .box{
+    animation-play-state: paused;
+}
+.box span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    transform-origin: center;
+
+    font-size: 3.5em;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    padding: 0 12px;
+
+    filter: blur(0.2px);
+    text-shadow: 0 10px 15px rgba(0,0,0,.4);
 }
 
 </style>
@@ -688,134 +721,201 @@ input{
 <body>
 <!-- ===== 進站介紹動畫 ===== -->
 <div id="intro">
-  <div class="container">
-    <div class="box">
-      <span style="--i:1"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:2"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:3"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:4"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:5"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:6"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:7"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:8"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:9"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:10"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:11"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:12"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:13"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:14"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:15"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-      <span style="--i:16"><i>台中二中</i> 114學年 <i>自主學習</i></span>
-    </div>
-  </div>
+  <div class="container">
+    <div class="box">
+      <span style="--i:1">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+
+      <span style="--i:2">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:3">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:4">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:5">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:6">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:7">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:8">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:9">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:10">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:11">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:12">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:13">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:14">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:15">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+<span style="--i:16">
+  <span class="scribble">
+    <i>台中二中</i> 114學年 <i>學習歷程</i>
+  </span>
+</span>
+
+
+    </div>
+  </div>
 </div>
 
 <!-- 三重旅行者背景 -->
 <div class="bg-wrap" aria-hidden="true">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
 </div>
 
 
 <a href="#" class="html123">
-    <span class="shadow-dance-text">首頁</span>
+    <span class="shadow-dance-text">首頁</span>
 </a>
 
 <ul class="html2">
-    <div class="html3">            
-        <li><a href="#" class="html4" id="deleteAllBtn">刪除全部</a></li>
-        <li ><a href="#" class="html4">內容</a></li>
-        <li ><a href="#" class="html4">內容</a></li>  
-    </div>    
+    <div class="html3">            
+        <li><a href="#" class="html4" id="deleteAllBtn">刪除全部</a></li>
+        <li ><a href="#" class="html4">內容</a></li>
+        <li ><a href="#" class="html4">內容</a></li>   
+    </div>     
 </ul>
 
 <div class="table">
-    <div class="square"></div>
+    <div class="square"></div>
 
-    <div class="form">
-        <form action="get">
-            <input type="text" id="name" name="name" class="the_text" placeholder="" autocomplete="off">
-            <label for="name" class="the_label">聊天室</label><br>
-            <input type="submit" value="發送✈️" class="sent">
-        </form>
-    </div>  
+    <div class="form">
+        <form action="get">
+            <input type="text" id="name" name="name" class="the_text" placeholder="" autocomplete="off">
+            <label for="name" class="the_label">聊天室</label><br>
+            <input type="submit" value="發送✈️" class="sent">
+        </form>
+    </div>   
 </div>
 
 <div class="all_table">
-    <div class="scroll-container">      
-        <div class="scroll-page" id="page-1">
-            <h1>聊天大廳</h1>
-            <div class="page-content"></div>
-            <div id="scrollDownBtn">⬇</div>
-        </div>
-        <div class="scroll-page" id="page-2">
-    <h1>個人資料</h1>
-    <div class="page-content">
-        <!-- 帳號名稱輸入區 -->
-        <div class="form" style="margin-top: 20px; max-width: 300px;">
-            <form id="usernameForm">
-                <input type="text" id="username" name="username" class="the_text" placeholder="" autocomplete="off">
-                <label for="username" class="the_label">帳號名稱</label><br>
-                <input type="submit" value="確認" class="sent">
-            </form>
-            <p id="displayUsername" style="color:white; margin-top:10px;">尚未設定帳號名稱</p>
-        </div>
-    </div>
+    <div class="scroll-container">      
+        <div class="scroll-page" id="page-1">
+            <h1>聊天大廳</h1>
+            <div class="page-content"></div>
+            <div id="scrollDownBtn">⬇</div>
+        </div>
+        <div class="scroll-page" id="page-2">
+    <h1>個人資料</h1>
+    <div class="page-content">
+        <!-- 帳號名稱輸入區 -->
+        <div class="form" style="margin-top: 20px; max-width: 300px;">
+            <form id="usernameForm">
+                <input type="text" id="username" name="username" class="the_text" placeholder="" autocomplete="off">
+                <label for="username" class="the_label">帳號名稱</label><br>
+                <input type="submit" value="確認" class="sent">
+            </form>
+            <p id="displayUsername" style="color:white; margin-top:10px;">尚未設定帳號名稱</p>
+        </div>
+    </div>
 </div>
 
-        <div class="scroll-page" id="page-3">
-            <h1>第三頁</h1>
-            <div class="page-content"></div>
-        </div>
-        <div class="scroll-page" id="page-4">
-            <h1>第四頁</h1>
-            <div class="page-content"></div>
-        </div>
-        <div class="scroll-page" id="page-5">
-            <h1>第五頁</h1>
-            <div class="page-content"></div>
-        </div>
-        <div class="scroll-page" id="page-6">
-            <h1>第六頁</h1>
-            <div class="page-content"></div>
-        </div>
-        <div class="scroll-page" id="page-7">
-            <h1>第七頁</h1>
-            <div class="page-content"></div>
-        </div>
-        <div class="scroll-page" id="page-8">
-            <h1>第八頁</h1>
-            <div class="page-content"></div>
-        </div>
-        <div class="scroll-page" id="page-9">
-            <h1>第九頁</h1>
-            <div class="page-content"></div>
-        </div>
-    </div>
+        <div class="scroll-page" id="page-3">
+            <h1>第三頁</h1>
+            <div class="page-content"></div>
+        </div>
+        <div class="scroll-page" id="page-4">
+            <h1>第四頁</h1>
+            <div class="page-content"></div>
+        </div>
+        <div class="scroll-page" id="page-5">
+            <h1>第五頁</h1>
+            <div class="page-content"></div>
+        </div>
+        <div class="scroll-page" id="page-6">
+            <h1>第六頁</h1>
+            <div class="page-content"></div>
+        </div>
+        <div class="scroll-page" id="page-7">
+            <h1>第七頁</h1>
+            <div class="page-content"></div>
+        </div>
+        <div class="scroll-page" id="page-8">
+            <h1>第八頁</h1>
+            <div class="page-content"></div>
+        </div>
+        <div class="scroll-page" id="page-9">
+            <h1>第九頁</h1>
+            <div class="page-content"></div>
+        </div>
+    </div>
 
-    <div class="table9">  
-          <a href="#" data-target="page-1" class="card">
-    <span class="circleLight"></span>
-    <span class="card-text">訊息</span>
-  </a>
-        <a href="#" data-target="page-2">個人</a>
-        <a href="#" data-target="page-3">3</a>
-        <a href="#" data-target="page-4">4</a>
-        <a href="#" data-target="page-5">5</a>
-        <a href="#" data-target="page-6">6</a>
-        <a href="#" data-target="page-7">7</a>
-        <a href="#" data-target="page-8">8</a>
-        <a href="#" data-target="page-9">9</a>
-    </div>
+    <div class="table9">   
+          <a href="#" data-target="page-1" class="card">
+    <span class="circleLight"></span>
+    <span class="card-text">訊息</span>
+  </a>
+        <a href="#" data-target="page-2">個人</a>
+        <a href="#" data-target="page-3">3</a>
+        <a href="#" data-target="page-4">4</a>
+        <a href="#" data-target="page-5">5</a>
+        <a href="#" data-target="page-6">6</a>
+        <a href="#" data-target="page-7">7</a>
+        <a href="#" data-target="page-8">8</a>
+        <a href="#" data-target="page-9">9</a>
+    </div>
 </div>
 
 <ul class="html2">
-    <div class="html3">                      
-        <li ><a href="#" class="html4">內容</a></li>
-        <li ><a href="#" class="html4">內容</a></li>
-        <li ><a href="#" class="html4">內容</a></li>  
-    </div>                  
+    <div class="html3">                       
+        <li ><a href="#" class="html4">內容</a></li>
+        <li ><a href="#" class="html4">內容</a></li>
+        <li ><a href="#" class="html4">內容</a></li>  
+    </div>                  
 </ul>
 <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-database-compat.js"></script>
@@ -823,13 +923,13 @@ input{
 <script>
 // Firebase 設定
 const firebaseConfig = {
-  apiKey: "AIzaSyDWsBH-ozVRjYP9YTASPpsV9AuggDfSbDQ",
-  authDomain: "html123-340be.firebaseapp.com",
-  databaseURL: "https://html123-340be-default-rtdb.firebaseio.com",
-  projectId: "html123-340be",
-  storageBucket: "html123-340be.firebasestorage.app",
-  messagingSenderId: "192470264730",
-  appId: "1:192470264730:web:99178a0f9125deb4b66823"
+  apiKey: "AIzaSyDWsBH-ozVRjYP9YTASPpsV9AuggDfSbDQ",
+  authDomain: "html123-340be.firebaseapp.com",
+  databaseURL: "https://html123-340be-default-rtdb.firebaseio.com",
+  projectId: "html123-340be",
+  storageBucket: "html123-340be.firebasestorage.app",
+  messagingSenderId: "192470264730",
+  appId: "1:192470264730:web:99178a0f9125deb4b66823"
 };
 
 // 初始化 Firebase
@@ -844,147 +944,147 @@ const displayUsername = document.getElementById("displayUsername");
 // 頁面載入時，先從 localStorage 取得帳號名稱
 const savedUsername = localStorage.getItem("username");
 if(savedUsername){
-    displayUsername.textContent = "帳號名稱：" + savedUsername;
+    displayUsername.textContent = "帳號名稱：" + savedUsername;
 } else {
-    // localStorage 沒有，再從 Firebase 讀取
-    db.ref("users/username").once("value").then(snapshot => {
-        const data = snapshot.val();
-        if(data && data.name){
-            displayUsername.textContent = "帳號名稱：" + data.name;
-            localStorage.setItem("username", data.name);
-        }
-    });
+    // localStorage 沒有，再從 Firebase 讀取
+    db.ref("users/username").once("value").then(snapshot => {
+        const data = snapshot.val();
+        if(data && data.name){
+            displayUsername.textContent = "帳號名稱：" + data.name;
+            localStorage.setItem("username", data.name);
+        }
+    });
 }
 
 // 表單提交時
 usernameForm.addEventListener("submit", function(e){
-    e.preventDefault();
-    const username = usernameInput.value.trim();
-    if(!username) return alert("請輸入帳號名稱");
+    e.preventDefault();
+    const username = usernameInput.value.trim();
+    if(!username) return alert("請輸入帳號名稱");
 
-    // 存到 Firebase
-    db.ref("users/username").set({
-        name: username,
-        time: Date.now()
-    });
+    // 存到 Firebase
+    db.ref("users/username").set({
+        name: username,
+        time: Date.now()
+    });
 
-    // 存到 localStorage
-    localStorage.setItem("username", username);
+    // 存到 localStorage
+    localStorage.setItem("username", username);
 
-    // 顯示在頁面上
-    displayUsername.textContent = "帳號名稱：" + username;
+    // 顯示在頁面上
+    displayUsername.textContent = "帳號名稱：" + username;
 
-    // 清空輸入框
-    usernameInput.value = "";
+    // 清空輸入框
+    usernameInput.value = "";
 });
 
 // ===== 聊天室功能 =====
 const form = document.querySelector(".form form");
 const input = document.querySelector("#name");
 const firstPageContent = document.querySelector("#page-1 .page-content");
-const scrollDownBtn = document.getElementById("scrollDownBtn");
+const scrollDownBtn = document.getElementById("scrollDownBtn"); 
 
 // 發送訊息
 form.addEventListener("submit", function(e){
-    e.preventDefault();
-    const text = input.value.trim();
-    if(!text) return;
+    e.preventDefault(); 
+    const text = input.value.trim();
+    if(!text) return;
 
-    const username = localStorage.getItem("username");
-    if(!username){
-        // 提示用戶去個人資料頁面
-        alert("請先在個人資料頁面設定帳號名稱，才能發送訊息！");
-       
-        // 自動切換到「個人資料」頁面
-        const page = document.getElementById("page-2");
-        const left = page.offsetLeft;
-        container.scrollTo({ left: left, behavior: "smooth" });
+    const username = localStorage.getItem("username");
+    if(!username){
+        // 提示用戶去個人資料頁面
+        alert("請先在個人資料頁面設定帳號名稱，才能發送訊息！");
+        
+        // 自動切換到「個人資料」頁面
+        const page = document.getElementById("page-2");
+        const left = page.offsetLeft;
+        container.scrollTo({ left: left, behavior: "smooth" });
 
-        return;
-    }
+        return;
+    }
 
-    db.ref("messages").push({
-        text: username + "： " + text,
-        time: Date.now()
-    });
+    db.ref("messages").push({
+        text: username + "： " + text,
+        time: Date.now()
+    });
 
-    input.value = "";
+    input.value = "";
 });
 
 // ===== 監聽 Firebase 新訊息 =====
 db.ref("messages").on("child_added", snapshot => {
-    const data = snapshot.val();
-    if(data && data.text){
-        addMessage(data.text);
-    }
+    const data = snapshot.val();
+    if(data && data.text){
+        addMessage(data.text);
+    }
 });
 
 
 // 新增訊息到畫面
 function addMessage(text){
-    const p = document.createElement("p");
-    p.textContent = text;
-    p.style.margin = "6px 0";
-    p.style.fontSize = "18px";
-    p.style.color = "#ffffff";
-    p.style.textAlign = "left";
-    p.style.wordBreak = "break-word";
+    const p = document.createElement("p");
+    p.textContent = text;
+    p.style.margin = "6px 0";
+    p.style.fontSize = "18px";
+    p.style.color = "#ffffff";
+    p.style.textAlign = "left";
+    p.style.wordBreak = "break-word";
 
-    const isAtBottom =
-        firstPageContent.scrollHeight -
-        firstPageContent.scrollTop -
-        firstPageContent.clientHeight < 10;
+    const isAtBottom =
+        firstPageContent.scrollHeight -
+        firstPageContent.scrollTop -
+        firstPageContent.clientHeight < 10;
 
-    firstPageContent.appendChild(p);
+    firstPageContent.appendChild(p);
 
-    if (isAtBottom) {
-        firstPageContent.scrollTop = firstPageContent.scrollHeight;
-        scrollDownBtn.style.display = "none";
-    } else {
-        scrollDownBtn.style.display = "flex";
-    }
+    if (isAtBottom) {
+        firstPageContent.scrollTop = firstPageContent.scrollHeight;
+        scrollDownBtn.style.display = "none";
+    } else {
+        scrollDownBtn.style.display = "flex";
+    }
 }
 
 // ===== 刪除全部聊天訊息 =====
 const deleteAllBtn = document.getElementById("deleteAllBtn");
 deleteAllBtn.addEventListener("click", function(e){
-    e.preventDefault();
-    const password = prompt("請輸入密碼以刪除所有訊息：");
-    if(password !== "990323"){
-        alert("密碼錯誤，無法刪除訊息！");
-        return;
-    }
+    e.preventDefault();
+    const password = prompt("請輸入密碼以刪除所有訊息：");
+    if(password !== "990323"){
+        alert("密碼錯誤，無法刪除訊息！");
+        return;
+    }
 
-    if(!confirm("確定要刪除【聊天大廳】所有訊息嗎？此動作無法復原！")) return;
+    if(!confirm("確定要刪除【聊天大廳】所有訊息嗎？此動作無法復原！")) return;
 
-    db.ref("messages").remove();
-    firstPageContent.innerHTML = "";
+    db.ref("messages").remove();
+    firstPageContent.innerHTML = "";
 });
 
 // ===== 向下箭頭功能 =====
 scrollDownBtn.addEventListener("click", () => {
-    firstPageContent.scrollTop = firstPageContent.scrollHeight;
-    scrollDownBtn.style.display = "none";
+    firstPageContent.scrollTop = firstPageContent.scrollHeight;
+    scrollDownBtn.style.display = "none";
 });
 
 firstPageContent.addEventListener("scroll", () => {
-    const isAtBottom =
-        firstPageContent.scrollHeight -
-        firstPageContent.scrollTop -
-        firstPageContent.clientHeight < 10;
-    scrollDownBtn.style.display = isAtBottom ? "none" : "flex";
+    const isAtBottom =
+        firstPageContent.scrollHeight -
+        firstPageContent.scrollTop -
+        firstPageContent.clientHeight < 10;
+    scrollDownBtn.style.display = isAtBottom ? "none" : "flex";
 });
 
 // ===== 九宮格切換頁面 =====
 const container = document.querySelector(".scroll-container");
 document.querySelectorAll(".table9 a").forEach(btn => {
-    btn.addEventListener("click", e => {
-        e.preventDefault();
-        const id = btn.dataset.target;
-        const page = document.getElementById(id);
-        const left = page.offsetLeft;
-        container.scrollTo({ left: left, behavior: "smooth" });
-    });
+    btn.addEventListener("click", e => {
+        e.preventDefault();
+        const id = btn.dataset.target;
+        const page = document.getElementById(id);
+        const left = page.offsetLeft;
+        container.scrollTo({ left: left, behavior: "smooth" });
+    });
 });
 
 /* ===== 三重旅行者背景產生器 ===== */
@@ -992,57 +1092,57 @@ const TOTAL_TRI = 200;
 const bgWrap = document.querySelector(".bg-wrap");
 
 for(let i = 0; i < TOTAL_TRI; i++){
-    const tri = document.createElement("div");
-    tri.className = "tri";
+    const tri = document.createElement("div");
+    tri.className = "tri";
 
-    const size = Math.random() * 50 + 10;
-    const hue = Math.floor(Math.random() * 360);
-    const rotate = Math.random() * 360;
-    const x = (Math.random() - 0.5) * 1000;
-    const y = (Math.random() - 0.5) * 1000;
-    const delay = -i * (10 / TOTAL_TRI);
+    const size = Math.random() * 50 + 10;
+    const hue = Math.floor(Math.random() * 360);
+    const rotate = Math.random() * 360;
+    const x = (Math.random() - 0.5) * 1000;
+    const y = (Math.random() - 0.5) * 1000;
+    const delay = -i * (10 / TOTAL_TRI);
 
-    tri.style.borderTop = `${size}px solid hsla(${hue},100%,50%,1)`;
-    tri.style.borderLeft = `${size}px solid transparent`;
-    tri.style.borderRight = `${size}px solid transparent`;
-    tri.style.marginLeft = `${-size / 2}px`;
-    tri.style.marginTop = `${-size / 2}px`;
+    tri.style.borderTop = `${size}px solid hsla(${hue},100%,50%,1)`;
+    tri.style.borderLeft = `${size}px solid transparent`;
+    tri.style.borderRight = `${size}px solid transparent`;
+    tri.style.marginLeft = `${-size / 2}px`;
+    tri.style.marginTop = `${-size / 2}px`;
 
-    tri.animate([
-        {
-            opacity: 1,
-            transform: `
-                rotate(${rotate * 1.5}deg)
-                translate3d(${x}px, ${y}px, 1000px)
-                scale(1)
-            `
-        },
-        {
-            opacity: 0,
-            transform: `
-                rotate(${rotate}deg)
-                translate3d(0, 0, -1500px)
-                scale(0)
-            `
-        }
-    ],{
-        duration: 10000,
-        delay: delay * 1000,
-        iterations: Infinity,
-        easing: "linear"
-    });
+    tri.animate([
+        {
+            opacity: 1,
+            transform: `
+                rotate(${rotate * 1.5}deg)
+                translate3d(${x}px, ${y}px, 1000px)
+                scale(1)
+            `
+        },
+        {
+            opacity: 0,
+            transform: `
+                rotate(${rotate}deg)
+                translate3d(0, 0, -1500px)
+                scale(0)
+            `
+        }
+    ],{
+        duration: 10000,
+        delay: delay * 1000,
+        iterations: Infinity,
+        easing: "linear"
+    });
 
-    bgWrap.appendChild(tri);
+    bgWrap.appendChild(tri);
 }
 /* ===== 星空 box-shadow 生成器 ===== */
 function generateStars(el, count, maxX, maxY) {
-    const shadows = [];
-    for (let i = 0; i < count; i++) {
-        const x = Math.floor(Math.random() * maxX);
-        const y = Math.floor(Math.random() * maxY);
-        shadows.push(`${x}px ${y}px #fff`);
-    }
-    el.style.boxShadow = shadows.join(", ");
+    const shadows = [];
+    for (let i = 0; i < count; i++) {
+        const x = Math.floor(Math.random() * maxX);
+        const y = Math.floor(Math.random() * maxY);
+        shadows.push(`${x}px ${y}px #fff`);
+    }
+    el.style.boxShadow = shadows.join(", ");
 }
 
 // 依螢幕大小產生
@@ -1054,65 +1154,69 @@ generateStars(document.getElementById("stars"), 600, width, height);
 generateStars(document.getElementById("stars2"), 300, width, height);
 generateStars(document.getElementById("stars3"), 150, width, height);
 window.addEventListener("resize", () => {
-    const w = window.innerWidth;
-    const h = window.innerHeight * 2;
+    const w = window.innerWidth;
+    const h = window.innerHeight * 2;
 
-    generateStars(document.getElementById("stars"), 600, w, h);
-    generateStars(document.getElementById("stars2"), 300, w, h);
-    generateStars(document.getElementById("stars3"), 150, w, h);
+    generateStars(document.getElementById("stars"), 600, w, h);
+    generateStars(document.getElementById("stars2"), 300, w, h);
+    generateStars(document.getElementById("stars3"), 150, w, h);
 });
 
 document.querySelectorAll(".table9 a").forEach(card => {
-    card.addEventListener("mousemove", e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-        card.style.setProperty(
-            "--light",
-            `radial-gradient(circle at ${x}px ${y}px,
-             rgba(255,255,255,0.9),
-             transparent 60%)`
-        );
+        card.style.setProperty(
+            "--light",
+            `radial-gradient(circle at ${x}px ${y}px,
+             rgba(255,255,255,0.9),
+             transparent 60%)`
+        );
 
-        card.style.setProperty("background-image", `var(--light)`);
-    });
+        card.style.setProperty("background-image", `var(--light)`);
+    });
 });
 document.querySelectorAll(".table9 a").forEach(card => {
-    card.addEventListener("mousemove", e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-        card.style.setProperty(
-            "--light",
-            `radial-gradient(circle at ${x}px ${y}px,
-             rgba(255,255,255,0.9),
-             transparent 60%)`
-        );
+        card.style.setProperty(
+            "--light",
+            `radial-gradient(circle at ${x}px ${y}px,
+             rgba(255,255,255,0.9),
+             transparent 60%)`
+        );
 
-        card.style.backgroundImage = "var(--light)";
-    });
+        card.style.backgroundImage = "var(--light)";
+    });
 
-    card.addEventListener("mouseleave", () => {
-        card.style.backgroundImage = "";
-        card.style.removeProperty("--light");
-    });
+    card.addEventListener("mouseleave", () => {
+        card.style.backgroundImage = "";
+        card.style.removeProperty("--light");
+    });
 });
 
 window.addEventListener("load", () => {
-    const intro = document.getElementById("intro");
+    const intro = document.getElementById("intro");
 
-    // 播放 4.5 秒後淡出
-    setTimeout(() => {
-        intro.classList.add("hide");
-    }, 4500);
+    // 播放 4.5 秒後淡出
+    setTimeout(() => {
+    intro.classList.add("hide");
+}, 7200);
+
 });
+
+
+
+
 </script>
+
 </body>
 </html>
-
-
 
 
 
