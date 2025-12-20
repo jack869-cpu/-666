@@ -556,19 +556,22 @@ input{
 /* ===== 首頁 SHADOW DANCE 文字效果 ===== */
 .shadow-dance-text{
     display: inline-block;
-    font-size: 40px;               /* 跟你原本一致 */
+    font-size: 40px;
     font-weight: bold;
-    color: #fff;
+    font-style: italic;
+
+    /* ⛔ 先不要動顏色（下一段說） */
+    color: inherit;
+
     text-shadow:
         4px 4px 0 #ff005e,
         8px 8px 0 #00d4ff;
-    animation: shadow-dance 2s infinite;
-}
-.shadow-dance-text{
-    animation: shadow-dance 2s infinite, bounce 2s infinite;
-    font-style: italic;
 
+    animation:
+        shadow-dance 2s infinite,
+        bounce 2s infinite;
 }
+
 
 @keyframes bounce{
     0%,100%{ transform: translateY(0); }
@@ -603,22 +606,26 @@ input{
     justify-content: center;
     align-items: center;
     transition: opacity 1s ease, visibility 1s ease;
+
+    perspective: 800px;
+    perspective-origin: center center;
 }
 
 #intro.hide{
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
+
+#intro.hide .scribble{
+    animation: none;
+}
+
 
 /* 字體 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
-#intro *{
-    box-sizing: border-box;
-    font-family: 'Rock Salt', cursive;
-    letter-spacing: 0.12em;
-}
 
 
 
@@ -720,6 +727,20 @@ input{
     filter: blur(0.2px);
     text-shadow: 0 10px 15px rgba(0,0,0,.4);
 }
+.html123{
+    animation: slideIn 0.8s ease-out both;
+}
+
+@keyframes slideIn{
+    from{
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 </style>
 </head>
@@ -728,11 +749,6 @@ input{
 <div id="intro">
   <div class="container">
     <div class="box">
-      <span style="--i:1">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
 <span style="--i:1">
   <i class="scribble">
     <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
