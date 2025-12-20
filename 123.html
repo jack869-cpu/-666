@@ -660,13 +660,17 @@ input{
 }
 
 @keyframes introRotate{
-    from{
+    0%{
         transform: rotateX(0deg) rotateY(8deg);
     }
-    to{
-        transform: rotateX(360deg) rotateY(8deg);
+    70%{
+        transform: rotateX(300deg) rotateY(8deg);
+    }
+    100%{
+        transform: rotateX(405deg) rotateY(8deg) translateZ(200px);
     }
 }
+
 
 
 
@@ -679,7 +683,7 @@ input{
     transform:
         translate(-50%, -50%)
         rotateX(calc(var(--i) * 22.5deg))
-        translateZ(120px)
+        translateZ(260px)
         rotateZ(-2deg);
 }
 #intro{
@@ -693,7 +697,7 @@ input{
     transform:
         translate(-50%, -50%)
         rotateX(calc(var(--i) * 22.5deg))
-        translateZ(120px)
+        translateZ(260px)
         rotateZ(2.5deg);
 }
 #intro.hide .box{
@@ -704,6 +708,7 @@ input{
     left: 50%;
     top: 50%;
     transform-style: preserve-3d;
+    will-change: transform;
     transform-origin: center;
 
     font-size: 3.5em;
@@ -724,86 +729,91 @@ input{
   <div class="container">
     <div class="box">
       <span style="--i:1">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
-
-      <span style="--i:2">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+<span style="--i:1">
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
+</span>
+<span style="--i:2">
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:3">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:4">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:5">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:6">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:7">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:8">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:9">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:10">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:11">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:12">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:13">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:14">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:15">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
 <span style="--i:16">
-  <span class="scribble">
-    <i>台中二中</i> 114學年 <i>學習歷程</i>
-  </span>
+  <i class="scribble">
+    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
+  </i>
 </span>
+
 
 
     </div>
