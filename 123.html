@@ -727,9 +727,10 @@ input{
     filter: blur(0.2px);
     text-shadow: 0 10px 15px rgba(0,0,0,.4);
 }
-.html123{
+.html123.slide-in{
     animation: slideIn 0.8s ease-out both;
 }
+
 
 @keyframes slideIn{
     from{
@@ -1228,13 +1229,16 @@ document.querySelectorAll(".table9 a").forEach(card => {
 
 window.addEventListener("load", () => {
     const intro = document.getElementById("intro");
+    const homeBtn = document.querySelector(".html123");
 
-    // 播放 4.5 秒後淡出
     setTimeout(() => {
-    intro.classList.add("hide");
-}, 7200);
+        intro.classList.add("hide");
 
+        // 🔥 intro 消失後，再播放滑入動畫
+        homeBtn.classList.add("slide-in");
+    }, 7200);
 });
+
 
 
 
