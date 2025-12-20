@@ -8,8 +8,7 @@
 <link rel="stylesheet" href="style.css">
 <style>
  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-  
+   
 /*  全域設定  */
 body{    
     position: relative;
@@ -164,7 +163,12 @@ form.css.table{
     border-radius: 10%;
 }
 
-
+/* form label{
+    font-size: 40px;
+    color: white;
+    margin: 0 auto;
+    padding: 30px;
+} */
 
 form {
     box-sizing: border-box;
@@ -556,22 +560,19 @@ input{
 /* ===== 首頁 SHADOW DANCE 文字效果 ===== */
 .shadow-dance-text{
     display: inline-block;
-    font-size: 40px;
+    font-size: 40px;               /* 跟你原本一致 */
     font-weight: bold;
-    font-style: italic;
-
-    /* ⛔ 先不要動顏色（下一段說） */
-    color: inherit;
-
+    color: #fff;
     text-shadow:
         4px 4px 0 #ff005e,
         8px 8px 0 #00d4ff;
-
-    animation:
-        shadow-dance 2s infinite,
-        bounce 2s infinite;
+    animation: shadow-dance 2s infinite;
 }
+.shadow-dance-text{
+    animation: shadow-dance 2s infinite, bounce 2s infinite;
+    font-style: italic;
 
+}
 
 @keyframes bounce{
     0%,100%{ transform: translateY(0); }
@@ -606,27 +607,22 @@ input{
     justify-content: center;
     align-items: center;
     transition: opacity 1s ease, visibility 1s ease;
-
-    perspective: 800px;
-    perspective-origin: center center;
 }
 
 #intro.hide{
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
 }
-
-#intro.hide .scribble{
-    animation: none;
-}
-
 
 /* 字體 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 
-
+#intro *{
+    box-sizing: border-box;
+    font-family: 'Pacifico', cursive;
+    font-style: italic;
+    letter-spacing: 0.08em; /* 微拉開，更瀟灑 */
+}
 
 
 .container{
@@ -637,13 +633,37 @@ input{
 
 .box{
     position: relative;
-    width: 600px;
-    height: 600px;
     transform-style: preserve-3d;
-    animation: introRotate 7s ease-in-out forwards;
+    animation: introRotate 7s ease-in-out infinite alternate;
 }
 
+.box span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    font-weight: normal;
+    text-shadow:
+        0 6px 12px rgba(0,0,0,.35),
+        0 0 8px rgba(255,255,255,.15);
+    transform:
+        translate(-50%, -50%)
+        rotateX(calc(var(--i) * 22.5deg))
+        translateZ(120px);
 
+    font-size: 3.5em;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    padding: 0 12px;
+    text-shadow: 0 10px 15px rgba(0,0,0,.4);
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.5) 90%,
+        transparent
+    );
+}
 
 .box span i:nth-child(1){
     color: #5c5fc4;
@@ -653,93 +673,13 @@ input{
     color: #c4c15c;
     font-style: normal;
 }
-.scribble{
-    display: inline-block;
-    animation: scribble 0.35s infinite alternate;
-    will-change: transform;
-}
-@keyframes scribble {
-    0%   { transform: translate(0,0); }
-    25%  { transform: translate(1px,-1px); }
-    50%  { transform: translate(-1px,1px); }
-    75%  { transform: translate(1px,1px); }
-    100% { transform: translate(0,0); }
-}
 
 @keyframes introRotate{
     0%{
-        transform: rotateX(0deg) rotateY(8deg);
-    }
-    70%{
-        transform: rotateX(300deg) rotateY(8deg);
+        transform: perspective(500px) rotateX(0deg) rotate(5deg);
     }
     100%{
-        transform: rotateX(405deg) rotateY(8deg) translateZ(200px);
-    }
-}
-
-
-
-
-
-
-
-
-/* 奇數行 */
-.box span:nth-child(odd){
-    transform:
-        translate(-50%, -50%)
-        rotateX(calc(var(--i) * 22.5deg))
-        translateZ(260px)
-        rotateZ(-2deg);
-}
-#intro{
-    perspective: 800px;
-    perspective-origin: center center;
-}
-
-
-/* 偶數行 */
-.box span:nth-child(even){
-    transform:
-        translate(-50%, -50%)
-        rotateX(calc(var(--i) * 22.5deg))
-        translateZ(260px)
-        rotateZ(2.5deg);
-}
-#intro.hide .box{
-    animation-play-state: paused;
-}
-.box span{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform-style: preserve-3d;
-    will-change: transform;
-    transform-origin: center;
-
-    font-size: 3.5em;
-    font-weight: bold;
-    color: white;
-    white-space: nowrap;
-    padding: 0 12px;
-
-    filter: blur(0.2px);
-    text-shadow: 0 10px 15px rgba(0,0,0,.4);
-}
-.html123.slide-in{
-    animation: slideIn 0.8s ease-out both;
-}
-
-
-@keyframes slideIn{
-    from{
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0);
+        transform: perspective(50px) rotateX(360deg) rotate(5deg);
     }
 }
 
@@ -750,89 +690,22 @@ input{
 <div id="intro">
   <div class="container">
     <div class="box">
-<span style="--i:1">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:2">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:3">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:4">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:5">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:6">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:7">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:8">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:9">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:10">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:11">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:12">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:13">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:14">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:15">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-<span style="--i:16">
-  <i class="scribble">
-    <i>台中二中</i> 114學年第一學期 <i>自主學習</i>
-  </i>
-</span>
-
-
-
+      <span style="--i:1"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:2"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:3"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:4"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:5"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:6"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:7"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:8"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:9"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:10"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:11"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:12"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:13"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:14"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:15"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
+      <span style="--i:16"><i>台中二中</i> 114學年 <i>學習歷程</i></span>
     </div>
   </div>
 </div>
@@ -1229,16 +1102,12 @@ document.querySelectorAll(".table9 a").forEach(card => {
 
 window.addEventListener("load", () => {
     const intro = document.getElementById("intro");
-    const homeBtn = document.querySelector(".html123");
 
+    // 播放 4.5 秒後淡出
     setTimeout(() => {
         intro.classList.add("hide");
-
-        // 🔥 intro 消失後，再播放滑入動畫
-        homeBtn.classList.add("slide-in");
-    }, 7200);
+    }, 4500);
 });
-
 
 
 
@@ -1247,7 +1116,6 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
-
 
 
 
